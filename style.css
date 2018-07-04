@@ -24,3 +24,14 @@
     font-weight: bold;
     border-bottom: 2px solid black;
 }
+.prod-name {
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+.card-img {
+    height: 600px;
+}
+.tab-description-review {
+    width: 100%;
+}
