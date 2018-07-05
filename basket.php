@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="row">
+    <div class="col-md-12">
 
+    </div>
+</div>
 </body>
 </html>

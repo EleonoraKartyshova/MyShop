@@ -7,9 +7,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+        $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+        $('#myTabs a:first').tab('show') // Select first tab
+        $('#myTabs a:last').tab('show') // Select last tab
+        $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+    </script>
 </head>
 <body>
-<body>
+<header>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -60,8 +70,4 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
-</body>
-
-</body>
-</html>
+</header>
