@@ -1,0 +1,16 @@
+{
+    "name": "phpuser/project3",
+    "authors": [
+        {
+            "name": "shop",
+            "email": "elyakartyshova@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.23"
+    },
+    "autoload": {
+        "psr-4":{"MyShop\\":"app/",
+        "Shop\\":"src/mailer/"}
+    }
+}
