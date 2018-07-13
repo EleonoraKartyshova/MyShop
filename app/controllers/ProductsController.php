@@ -9,9 +9,8 @@ namespace MyShop\controllers;
 use MyShop\core\Controller;
 class ProductsController extends Controller
 {
-    public function __construct()
+    public function action_index()
     {
-        parent::__construct();
         $this->view->generate('productsView.php');
     }
 }

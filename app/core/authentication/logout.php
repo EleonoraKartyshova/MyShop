@@ -1,6 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-require 'Authentication.php';
+//use MyShop\core\authentication\Authentication;
+use MyShop\controllers\AuthController;
 
-Authentication::logout();
+//require 'Authentication.php';
+
+AuthController::logout();

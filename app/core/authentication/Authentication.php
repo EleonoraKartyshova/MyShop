@@ -1,47 +1,54 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: phpuser
- * Date: 12.07.18
- * Time: 17:03
- */
+namespace MyShop\core\authentication;
 class Authentication
 {
-    private static $log = "eleonora";
+    private static $log = "el@el";
     private static $pass = "1234";
 
-    public $login;
-    public $password;
 
-    public function __construct($login, $password)
-    {
-        $this->login = $login;
-        $this->password = $password;
-    }
-    public static function isAuth($login, $password)
+
+
+    public static function auth($login, $password)
     {
         if (self::valLog($login) && self::valPas($password) && $login == self::$log && $password == self::$pass) {
+            session_start();
             $_SESSION['login'] = $login;
             $_SESSION['password'] = $password;
-            return true;
-        } else { return false;}
+            header('Location: /main');
+
+        } else {
+            header('Location: /main');
+
+        }
     }
-    public static function auth()
+    public static function is_auth()
     {
-        session_start();
+        //var_dump(session_name());
+        if(isset($_COOKIE[session_name()])){
+            session_start();
+            return true;
+        }else{
+            return false;
+        }
     }
-    public static function getLogin()
+    public static function get_login()
     {
         return $_SESSION['login'];
+        //else{
+            //header('Location: ../index.php');
+        //}
     }
     public static function logout()
     {
-        session_start();
-        //$_SESSION=array();
+        //session_start();
         session_unset();
         session_destroy();
-        header('Location: index.php');
-        exit;
+        //var_dump(session_name());
+        setcookie(session_name(),'', -1, '/');
+        //$_SESSION=array();
+        //var_dump($_COOKIE);
+        //var_dump($_SESSION);
+        header('Location: /main');
     }
     public static function valLog($login)
     {

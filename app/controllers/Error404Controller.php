@@ -9,9 +9,8 @@ namespace MyShop\controllers;
 use MyShop\core\Controller;
 class Error404Controller extends Controller
 {
-    public function __construct()
+    public function action_index()
     {
-        parent::__construct();
         $this->view->generate('error404View.php');
     }
 }

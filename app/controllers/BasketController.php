@@ -9,9 +9,9 @@ namespace MyShop\controllers;
 use MyShop\core\Controller;
 class BasketController extends Controller
 {
-    public function __construct()
+    public function action_index()
     {
-        parent::__construct();
+
         $this->view->generate('basketView.php');
     }
 }
