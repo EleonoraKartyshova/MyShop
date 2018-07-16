@@ -14,6 +14,5 @@ class Application
     public static function run()
     {
         Router::route();
-        echo '1';
     }
 }
