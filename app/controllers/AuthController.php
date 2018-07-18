@@ -7,28 +7,36 @@
  */
 
 namespace MyShop\controllers;
-
 use MyShop\core\authentication\Authentication;
-
-class AuthController
+use MyShop\core\Controller;
+use MyShop\models\AuthModel;
+class AuthController extends FrontController
 {
-    public static function logout()
+    public function logout()
     {
         Authentication::logout();
     }
-    public static function auth()
+    public function auth()
     {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        Authentication::auth($login, $password);
+        $new_login = $_POST['login'];
+        $new_password = $_POST['password'];
+        $obj = new AuthModel();
+        //$var = $obj->auth($new_login, $new_password);
+
+        $data_auth = $obj->auth($new_login, $new_password);
+        $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
     }
-    public static function is_auth()
-    {
-        return Authentication::is_auth();
-    }
-    public static function get_login()
+//    public function is_auth()
+//    {
+//        return Authentication::is_auth();
+//    }
+    public function get_login()
     {
         return Authentication::get_login();
     }
-
+    public function get_all_records()
+    {
+        $obj = new AuthModel();
+        return $obj->get_all_records();
+    }
 }

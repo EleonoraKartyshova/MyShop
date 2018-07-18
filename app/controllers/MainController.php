@@ -7,7 +7,8 @@
  */
 namespace MyShop\controllers;
 use MyShop\core\Controller;
-class MainController extends Controller
+use MyShop\controllers\FrontController;
+class MainController extends FrontController
 {
     /*public function __construct()
     {

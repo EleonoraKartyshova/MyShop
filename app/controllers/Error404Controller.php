@@ -7,7 +7,7 @@
  */
 namespace MyShop\controllers;
 use MyShop\core\Controller;
-class Error404Controller extends Controller
+class Error404Controller extends FrontController
 {
     public function action_index()
     {

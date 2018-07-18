@@ -2,6 +2,7 @@
 use MyShop\core\authentication\Authentication;
 use MyShop\controllers\AuthController;
 use MyShop\controllers\MainController;
+use MyShop\core\View;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,16 +71,16 @@ use MyShop\controllers\MainController;
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/products">Список товаров<span class="sr-only">(current)</span></a></li>
-                <li><a href="/basket">Корзина</a></li>
+                <li><a href="/basket/basket">Корзина</a></li>
                 <?php
-                //var_dump(Authentication::isAuth());
-                if (AuthController::is_auth()){
-                    echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">" . AuthController::get_login() . "</a></li>";
-                    echo "<form action='/auth/logout' method='post'><button type='submit'>Выйти</button></form>";
-                }else {
-                    echo "<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">Login</a></li>";
-                }
-                ?>
+//                var_dump($data_auth); exit;
+                if ($data_auth['auth']):?>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><?php echo $data_auth['login']; ?></a></li>
+                    <li><form action='/auth/logout' method='post'><button type='submit'>Выйти</button></form></li>
+                <?php else:?>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+
+                <?php endif; ?>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

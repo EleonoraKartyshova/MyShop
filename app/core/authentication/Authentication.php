@@ -2,22 +2,18 @@
 namespace MyShop\core\authentication;
 class Authentication
 {
-    private static $log = "el@el";
-    private static $pass = "1234";
-
-
-
-
-    public static function auth($login, $password)
+    public static function auth($new_login, $new_password, $login, $password)
     {
-        if (self::valLog($login) && self::valPas($password) && $login == self::$log && $password == self::$pass) {
-            session_start();
-            $_SESSION['login'] = $login;
-            $_SESSION['password'] = $password;
-            header('Location: /main');
+        if ($new_login == $login && $new_password == $password) {
+            //session_start();
+            //$_SESSION['login'] = $new_login;
+            //$_SESSION['password'] = $new_password;
+            //header('Location: /main');
+            return true;
 
         } else {
-            header('Location: /main');
+            //header('Location: /main');
+            return false;
 
         }
     }
@@ -50,21 +46,7 @@ class Authentication
         //var_dump($_SESSION);
         header('Location: /main');
     }
-    public static function valLog($login)
-    {
-        if(!is_string($login)){
-            echo "Вы ввели не строку!";
-        } else {
-            return true;
-        }
-    }
-    public static function valPas($password){
-        if(!is_numeric($password)){
-            echo "Вы ввели не целое число!";
-        } else {
-            return true;
-        }
-    }
+
 
 
 }

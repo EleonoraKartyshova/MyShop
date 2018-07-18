@@ -8,16 +8,25 @@
 namespace MyShop\core;
 class View
 {
-    //public $template_view; // здесь можно указать общий вид по умолчанию.
-
-    function generate($template_view, $data = null)
+    public $data = [];
+    function generate($template_view, $data = [])
     {
-        /*
-        if(is_array($data)) {
-            // преобразуем элементы массива в переменные
-            extract($data);
+
+        $this->data = array_merge($this->data, $data);
+
+
+
+var_dump(gettype($this->data));
+        var_dump($this->data);
+        if( is_array($this->data)) {
+
+//            преобразуем элементы массива в переменные
+            extract($this->data);
+
         }
-        */
+        var_dump($data_auth);
+        //var_dump($this->data);die;
+
 
         include 'app/views/'.$template_view;
     }

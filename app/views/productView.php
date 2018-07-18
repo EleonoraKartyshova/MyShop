@@ -1,28 +1,26 @@
 <?php
 require 'header.php';
-//$product = $products[$_GET['param']];
-//var_dump($data);die;
 ?>
     <div class="container">
         <div class="row">
             <?php
-            foreach ($data as $key => $product):
+            foreach ($product as $key => $prod):
                 ?>
-            <div><span class="prod-name"><?php echo $product->title; ?></span></div>
+            <div><span class="prod-name"><?php echo $prod->title; ?></span></div>
             <div class="col-md-6">
-                <img class="card-img" src="<?php echo $product->picture; ?>" alt="">
+                <img class="card-img" src="<?php echo $prod->picture; ?>" alt="">
             </div>
             <div class="col-md-6">
                 <div class="short-descr"><span>Характеристики</span></div>
                 <ul>
-                    <li>Style: <?php echo $product->style; ?></li>
-                    <li>Features: <?php echo $product->features; ?></li>
-                    <li>Fabric material: <?php echo $product->fabric_material; ?></li>
-                    <li>Length: <?php echo $product->length; ?></li>
-                    <li>Color: <?php echo $product->color; ?></li>
-                    <li>Manufacturer country: <?php echo $product->manufacturer_country; ?></li>
+                    <li>Style: <?php echo $prod->style; ?></li>
+                    <li>Features: <?php echo $prod->features; ?></li>
+                    <li>Fabric material: <?php echo $prod->fabric_material; ?></li>
+                    <li>Length: <?php echo $prod->length; ?></li>
+                    <li>Color: <?php echo $prod->color; ?></li>
+                    <li>Manufacturer country: <?php echo $prod->manufacturer_country; ?></li>
                 </ul>
-                <div>Price: <div><?php echo $product->price; ?></div></div>
+                <div>Price: <div><?php echo $prod->price; ?></div></div>
             </div>
         </div>
         <div class="row">
@@ -34,7 +32,7 @@ require 'header.php';
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="discription"><?php echo $product->description; ?></div>
+                    <div role="tabpanel" class="tab-pane active" id="discription"><?php echo $prod->description; ?></div>
                     <?php
                     endforeach;
                     ?>

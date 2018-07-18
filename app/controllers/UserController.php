@@ -7,11 +7,8 @@
  */
 namespace MyShop\controllers;
 use MyShop\core\Controller;
-class UserController extends Controller
+use MyShop\models\UserModel;
+class UserController extends FrontController
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->view->generate('userView.php');
-    }
+
 }
