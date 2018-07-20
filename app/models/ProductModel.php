@@ -6,8 +6,9 @@
  * Time: 11:46
  */
 namespace MyShop\models;
-use MyShop\core\Model;
-use MyShop\core\authentication\Authentication;
+
+use Shop\core\Model;
+
 class ProductModel extends Model
 {
     public $table_name = 'products';
@@ -15,14 +16,14 @@ class ProductModel extends Model
     public function get_rec_by_id($id)
     {
         $obj = new Model();
-        //$data = [];
-        $data = $obj->get_record_by_id($this->table_name, $id);
-//        if (Authentication::is_auth()){
-//            $data['auth'] = true;
-//            $data['login'] = $_SESSION['login'];
-//        }else{
-//            $data['auth'] = false;
-//        }
+        $data['product'] = $obj->get_record_by_id($this->table_name, $id)[0];
+        $sql = 'SELECT users_products_reviews.text_review, users_products_reviews.created_at, users.email 
+                FROM kartyshova_db.users_products_reviews 
+                INNER JOIN kartyshova_db.users 
+                ON users.id = users_products_reviews.user_id 
+                WHERE users_products_reviews.product_id = '. $id ;
+        $data['reviews'] = $obj->my_query($sql);
+
         return $data;
     }
 }

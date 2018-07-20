@@ -6,7 +6,7 @@
  * Time: 12:32
  */
 
-namespace MyShop;
+namespace Shop;
 use \PDO;
 
 class MyPDO

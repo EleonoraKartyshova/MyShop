@@ -7,8 +7,11 @@
  */
 
 namespace MyShop\controllers;
-use MyShop\core\Controller;
-use MyShop\core\authentication\Authentication;
+
+use Shop\core\Controller;
+use Shop\core\authentication\Authentication;
+use Shop\core\View;
+
 class FrontController extends Controller
 {
     public  function __construct()
@@ -25,6 +28,7 @@ class FrontController extends Controller
             $data['login'] = $_SESSION['login'];
         }else{
             $data['auth'] = false;
+            $data['login'] = false;
         }
         return $data;
 

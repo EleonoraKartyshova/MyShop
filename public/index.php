@@ -8,11 +8,9 @@ if ($debug) {
     error_reporting(E_ALL);
 }
 
-//require 'header.php';
-//require 'products.php';
-//require 'footer.php';
-require_once __DIR__.'/vendor/autoload.php';
-use MyShop\Application;
+require_once __DIR__ . '/../vendor/autoload.php';
+use Shop\Application;
+//use MyShop\controllers\MainController;
 $obj = new Application();
 Application::run();
 
@@ -24,9 +22,4 @@ Application::run();
 //$log->warning('Foo');
 //$log->error('Bar');
 
-//$a = new UserController();
-//$b = new UserModel();
-//$a->usrCont();
-//$b->usr();
-//function __autoload(){}
 

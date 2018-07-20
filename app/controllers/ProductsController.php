@@ -6,9 +6,11 @@
  * Time: 11:48
  */
 namespace MyShop\controllers;
-use MyShop\core\Controller;
+
+use Shop\core\Controller;
 use MyShop\models\ProductsModel;
-//use MyShop\controllers\FrontController;
+use MyShop\controllers\FrontController;
+
 class ProductsController extends FrontController
 {
     public function action_index()

@@ -8,7 +8,7 @@ require 'header.php';
             <h1>Sherri Hill</h1><br>
             <div class="row">
                 <div class="col-md-12">
-                    <img src="/src/images/page-brand-img-3.jpg" alt="">
+                    <img src="/images/page-brand-img-3.jpg" alt="">
                 </div>
             </div>
             <h2>The brand</h2>

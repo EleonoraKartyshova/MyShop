@@ -11,6 +11,6 @@
     },
     "autoload": {
         "psr-4":{"MyShop\\":"app/",
-        "Shop\\":"src/mailer/"}
+        "Shop\\":"src/"}
     }
 }

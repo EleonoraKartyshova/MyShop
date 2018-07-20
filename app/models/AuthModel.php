@@ -5,10 +5,11 @@
  * Date: 17.07.18
  * Time: 18:15
  */
-
 namespace MyShop\models;
-use MyShop\core\Model;
-use MyShop\core\authentication\Authentication;
+
+use Shop\core\Model;
+use Shop\core\authentication\Authentication;
+use Shop\session\Session;
 
 class AuthModel
 {
@@ -29,16 +30,18 @@ class AuthModel
         $users = $obj->get_all_records($this->table_name);
         foreach ($users as $key => $user) {
             if (Authentication::auth($new_login, $new_password, $user->email, $user->passw)) {
-                session_start();
+                Session::start();
                 $_SESSION['login'] = $new_login;
                 $_SESSION['password'] = $new_password;
                 $_SESSION['user_id'] = $user->id;
                 //$fl = true;
                 $data_auth['auth'] = true;
                 $data_auth['login'] =$_SESSION['login'];
+                return $data_auth;
+            } else {
+                $data_auth['auth'] = false;
             }
         }
-
         return $data_auth;
     }
 

@@ -7,11 +7,11 @@
 .products {
     width: 30%;
     height: 400px;
-    border: 1px dashed #c0c0c0;
-    border-radius: 10px;
-    margin-right: 20px;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin-right: 25px;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .product-item {
     border: 1px solid black;
@@ -132,4 +132,20 @@
 .basket-button-save:before
 {
     content: "\2714";
+}
+.mynavbar {
+    background-color: #337ab7;
+}
+.mynavbar-btn {
+    color: #fff !important;
+}
+.mynavbar-brand {
+    margin: 0 !important;
+    padding: 8px !important;
+}
+.mynavbar-exit {
+    margin: 8px !important;
+}
+.review-author {
+    color: #337ab7;
 }

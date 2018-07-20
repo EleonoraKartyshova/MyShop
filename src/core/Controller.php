@@ -5,7 +5,9 @@
  * Date: 11.07.18
  * Time: 10:14
  */
-namespace MyShop\core;
+namespace Shop\core;
+use Shop\core\View;
+
 class Controller
 {
     public $model;

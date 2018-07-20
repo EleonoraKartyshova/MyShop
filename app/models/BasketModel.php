@@ -6,7 +6,10 @@
  * Time: 11:47
  */
 namespace MyShop\models;
-use MyShop\core\Model;
+
+use Shop\core\Model;
+use Shop\exceptions\AuthException;
+use Shop\session\Session;
 
 class BasketModel
 {
@@ -14,7 +17,11 @@ class BasketModel
 
     public function add_to_basket($id)
     {
-        session_start();
+        if (!Session::cookieExists())
+        {
+            throw new AuthException();
+        }
+        Session::start();
         $obj = new Model();
         $result = $obj->get_record_by_id($this->table_name, $id);
         foreach ($result as $key => $product) {
@@ -48,7 +55,10 @@ class BasketModel
     }
     public function basket()
     {
-        //session_start();
+        if (Session::cookieExists())
+        {
+            Session::start();
+        }
         if (!isset($_SESSION['basket'])){
             $_SESSION['basket'] = [];
         }
@@ -56,7 +66,7 @@ class BasketModel
     }
     public function delete_from_basket($id)
     {
-        session_start();
+        Session::start();
         unset($_SESSION['basket'][$id]);
         return $_SESSION['basket'];
     }

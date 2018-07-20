@@ -6,16 +6,17 @@
  * Time: 11:45
  */
 namespace MyShop\controllers;
-use MyShop\core\Controller;
+
+use Shop\core\Controller;
 use MyShop\models\ProductModel;
+
 class ProductController extends FrontController
 {
     public function get_product($id)
     {
-
         $obj = new ProductModel();
         $data = $obj->get_rec_by_id($id);
-        $this->view->generate('productView.php', ["product" => $data]);
+        $this->view->generate('productView.php', $data);
     }
     public function action_index()
     {

@@ -1,5 +1,7 @@
 <?php
-namespace MyShop\core\authentication;
+namespace Shop\core\authentication;
+
+use Shop\session\Session;
 class Authentication
 {
     public static function auth($new_login, $new_password, $login, $password)
@@ -20,8 +22,8 @@ class Authentication
     public static function is_auth()
     {
         //var_dump(session_name());
-        if(isset($_COOKIE[session_name()])){
-            session_start();
+        if(Session::cookieExists()){
+            Session::start();
             return true;
         }else{
             return false;

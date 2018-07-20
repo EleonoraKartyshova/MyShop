@@ -6,8 +6,10 @@
  * Time: 11:42
  */
 namespace MyShop\controllers;
-use MyShop\core\Controller;
+use Shop\core\Controller;
 use MyShop\controllers\FrontController;
+use Shop\core\View;
+
 class MainController extends FrontController
 {
     /*public function __construct()

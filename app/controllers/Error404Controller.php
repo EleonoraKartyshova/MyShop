@@ -6,7 +6,7 @@
  * Time: 11:43
  */
 namespace MyShop\controllers;
-use MyShop\core\Controller;
+use Shop\core\Controller;
 class Error404Controller extends FrontController
 {
     public function action_index()
