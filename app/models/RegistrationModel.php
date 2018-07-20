@@ -10,13 +10,14 @@ namespace MyShop\models;
 use Shop\core\Model;
 use Shop\session\Session;
 
-class RegistrationModel
+class RegistrationModel extends Model
 {
     public $table_name = 'users';
+    protected $db_connect;
+
     public function reg($new_login, $new_password, $new_phone_number)
     {
-        $obj = new Model();
-        $users = $obj->get_all_records($this->table_name);
+        $users = $this->db_connect->get_all_records($this->table_name);
         $fl = true;
         foreach ($users as $key => $user) {
             if ($new_login == $user->email) {
@@ -33,9 +34,9 @@ class RegistrationModel
             $value2 = $new_password;
             $value3 = $new_phone_number;
             $field_val = [$field1 => $value1, $field2 => $value2, $field3 => $value3];
-            $obj->add_record($this->table_name, $field_val);
+            $this->db_connect->add_record($this->table_name, $field_val);
 
-            $user_id = $obj->get_last_record_id($this->table_name);
+            $user_id = $this->db_connect->get_last_record_id($this->table_name);
             Session::start();
             $_SESSION['login'] = $new_login;
             $_SESSION['password'] = $new_password;

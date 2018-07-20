@@ -5,11 +5,11 @@
  * Date: 12.07.18
  * Time: 11:46
  */
-
 namespace MyShop\models;
 
+use Shop\core\Model;
 
-class MainModel
+class MainModel extends Model
 {
-
+    protected $db_connect;
 }

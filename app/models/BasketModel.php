@@ -11,9 +11,10 @@ use Shop\core\Model;
 use Shop\exceptions\AuthException;
 use Shop\session\Session;
 
-class BasketModel
+class BasketModel extends Model
 {
     public $table_name = 'products';
+    protected $db_connect;
 
     public function add_to_basket($id)
     {
@@ -22,8 +23,7 @@ class BasketModel
             throw new AuthException();
         }
         Session::start();
-        $obj = new Model();
-        $result = $obj->get_record_by_id($this->table_name, $id);
+        $result = $this->db_connect->get_record_by_id($this->table_name, $id);
         foreach ($result as $key => $product) {
             if (!empty($_SESSION['basket'])) {
                 $_SESSION['basket'] += [

@@ -11,10 +11,11 @@ use Shop\core\Model;
 class ProductsModel extends Model
 {
     public $table_name = 'products';
+    protected $db_connect;
+
     public function get_all_rec()
     {
-        $obj = new Model();
-        $data = $obj->get_all_records($this->table_name);
+        $data = $this->db_connect->get_all_records($this->table_name);
         return $data;
     }
 }
