@@ -28,22 +28,25 @@ class OrderModel extends Model
         {
             throw new OrderException();
         }
-        //$field_val = [];
-        $field = 'user_id';
-        Session::start();
-        //var_dump($_SESSION['user_id']);
-        $value = $_SESSION['user_id'];
-        $field_val = [$field => $value];
-        $this->db_connect->add_record($this->table_name, $field_val);
 
-        $field1 = 'order_id';
-        $field2 = 'product_id';
-        $value1 = $this->db_connect->get_last_record_id($this->table_name);
-        //$order_id = $obj->get_column_by_id($this->additional_table_name, $rec_id);
-        foreach ($_SESSION['basket'] as $key=>$product){
-            $value2 = $key;
-            $field_val = [$field1 => $value1, $field2 => $value2];
-            $this->db_connect->add_record($this->additional_table_name, $field_val);
+        Session::start();
+        if (isset($_POST["order"]) && $_POST["order"] == $_SESSION["order"] )
+        {
+            $field = 'user_id';
+            $value = $_SESSION['user_id'];
+            $field_val = [$field => $value];
+            $this->db_connect->add_record($this->table_name, $field_val);
+            $field1 = 'order_id';
+            $field2 = 'product_id';
+            $value1 = $this->db_connect->get_last_record_id($this->table_name);
+            foreach ($_SESSION['basket'] as $key=>$product){
+                $value2 = $key;
+                $field_val = [$field1 => $value1, $field2 => $value2];
+                $this->db_connect->add_record($this->additional_table_name, $field_val);
+            }
+            $_SESSION["order"] = rand();
+            $_SESSION['basket'] = [];
         }
+
     }
 }

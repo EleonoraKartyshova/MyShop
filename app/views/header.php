@@ -65,16 +65,16 @@ use Shop\core\View;
                 <div class="modal-body">
                     <form action="/registration/reg" method="post">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Enter yor email:</label>
-                            <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            <label for="exampleInputEmail2">Enter yor email:</label>
+                            <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Enter your password:</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="exampleInputPassword2">Enter your password:</label>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Enter your phone number:</label>
-                            <input type="text" name="phone_number" class="form-control" id="exampleInputPassword1" placeholder="Phone number">
+                            <label for="exampleInputPassword3">Enter your phone number:</label>
+                            <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="Phone number">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -96,18 +96,18 @@ use Shop\core\View;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand mynavbar-brand" href="/main"><img src="/images/sherri-hill-logo1.jpg" alt=""></a>
+            <a class="navbar-brand mynavbar-brand" href="/main"><img src="/images/sherri-hill-logo1.jpg" alt="SHERRY HILL"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a class="mynavbar-btn" href="/products">Список товаров<span class="sr-only">(current)</span></a></li>
-                <li><a class="mynavbar-btn" href="/basket/basket">Корзина</a></li>
+                <li><a class="mynavbar-btn" href="/products">Catalog<span class="sr-only">(current)</span></a></li>
+                <li><a class="mynavbar-btn" href="/basket/basket">Basket</a></li>
                 <?php
                 if ($data_auth['auth'] && $data_auth['login']):?>
                     <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal"><?php echo $data_auth['login']; ?></a></li>
-                    <li><form action='/auth/logout' method='post'><button class="mynavbar-exit" type='submit'>Выйти</button></form></li>
+                    <li><form action='/auth/logout' method='post'><button class="mynavbar-exit" type='submit'>Log out</button></form></li>
                 <?php else:?>
                     <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
                     <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal1">Registration</a></li>

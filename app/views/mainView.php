@@ -1,6 +1,5 @@
 <?php
 require 'header.php';
-//var_dump($data_auth);
 ?>
 <div class="container">
     <div class="row">

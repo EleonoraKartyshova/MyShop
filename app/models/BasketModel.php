@@ -23,6 +23,7 @@ class BasketModel extends Model
             throw new AuthException();
         }
         Session::start();
+        $_SESSION['order'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));
         $result = $this->db_connect->get_record_by_id($this->table_name, $id);
         foreach ($result as $key => $product) {
             if (!empty($_SESSION['basket'])) {
@@ -58,6 +59,7 @@ class BasketModel extends Model
         if (Session::cookieExists())
         {
             Session::start();
+            $_SESSION['order'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));
         }
         if (!isset($_SESSION['basket'])){
             $_SESSION['basket'] = [];
@@ -67,6 +69,7 @@ class BasketModel extends Model
     public function delete_from_basket($id)
     {
         Session::start();
+        $_SESSION['order'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));
         unset($_SESSION['basket'][$id]);
         return $_SESSION['basket'];
     }

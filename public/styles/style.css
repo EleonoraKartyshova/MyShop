@@ -49,6 +49,7 @@
     color: #c0c0c0;
     border-top: 1px solid #c0c0c0;
     bottom: 0;
+    padding: 20px;
 }
 .tab-content {
     margin: 20px;
@@ -57,7 +58,7 @@
     height: 200px;
 }
 .basket {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
 }
 .navbar-brand img
@@ -144,8 +145,12 @@
     padding: 8px !important;
 }
 .mynavbar-exit {
-    margin: 8px !important;
+    margin: 12px !important;
 }
 .review-author {
     color: #337ab7;
+}
+.container {
+    margin-bottom: 50px !important;
+    width: 85% !important;
 }

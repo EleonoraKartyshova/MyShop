@@ -5,8 +5,8 @@
  * Date: 16.07.18
  * Time: 12:32
  */
-
 namespace Shop;
+
 use \PDO;
 
 class MyPDO
@@ -14,7 +14,7 @@ class MyPDO
     private $dbc;
     public function __construct()
     {
-        $dbc = new PDO('mysql:host=localhost;dbname=kartyshova_db','kartyshova','phpuser!');
+        $dbc = new PDO('mysql:host=localhost;dbname=myshop','root','elya12345');
         $this->dbc = $dbc;
     }
     public function get_record_by_id($table_name, $id)

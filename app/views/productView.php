@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 ?>
-    <div class="container">
+    <div class="container main-content">
         <div class="row">
             <div><span class="prod-name"><?php echo $product->title; ?></span></div>
             <div class="col-md-6">
@@ -43,6 +43,13 @@ require 'header.php';
                         <?php
                         endforeach;
                         ?>
+                        <div>
+                            <form action="/product/add_review/id/<?php  echo $product->id; ?>" method="post">
+                                <textarea class="form-control" name="text_review" rows="3" placeholder="Please, log in and leave your review here" required></textarea><br>
+                                <button type="submit" class="btn btn-primary">Add review</button>
+                                <input type="hidden" name="review" value="<?php echo $_SESSION["review"]; ?>" />
+                            </form><br><hr>
+                        </div>
                     </div>
                 </div>
                 </div>
