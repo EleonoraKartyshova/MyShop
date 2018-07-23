@@ -1,4 +1,5 @@
 <?php
+$page = 2;
 require 'header.php';
 ?>
 <div class="container">

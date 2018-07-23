@@ -1,9 +1,3 @@
-<?php
-use Shop\core\authentication\Authentication;
-use MyShop\controllers\AuthController;
-use MyShop\controllers\MainController;
-use Shop\core\View;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +19,8 @@ use Shop\core\View;
     </script>
 </head>
 <body>
-<header>
+<div class="mywrap">
+<header class="header">
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -102,11 +97,12 @@ use Shop\core\View;
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a class="mynavbar-btn" href="/products">Catalog<span class="sr-only">(current)</span></a></li>
-                <li><a class="mynavbar-btn" href="/basket/basket">Basket</a></li>
+                <li><a class="mynavbar-btn" href="/products"><span class="middle <?php if (isset($page) && $page == 2) {echo ' mynavbar-active';} ?>">Catalog</span></a></li>
+                <li><a class="mynavbar-btn" href="/basket/basket"><span class="middle <?php if (isset($page) && $page == 3) {echo ' mynavbar-active';} ?>">Basket</span></a></li>
                 <?php
                 if ($data_auth['auth'] && $data_auth['login']):?>
-                    <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal"><?php echo $data_auth['login']; ?></a></li>
+                    <li><a class="mynavbar-btn" href="/history/orders_history"><span class="middle <?php if (isset($page) && $page == 4) {echo ' mynavbar-active';} ?>">Orders history</span></a></li>
+                    <li><a class="mynavbar-btn" href="#"><?php echo $data_auth['login']; ?></a></li>
                     <li><form action='/auth/logout' method='post'><button class="mynavbar-exit" type='submit'>Log out</button></form></li>
                 <?php else:?>
                     <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>

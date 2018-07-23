@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 ?>
-<div class="container">
+<div class="container main-content">
     <div class="row">
         <div class="col-md-12">
             <h1>Sherri Hill</h1><br>

@@ -7,8 +7,8 @@ require 'header.php';
             <div class="col-md-6">
                 <img class="card-img" src="<?php echo $product->picture; ?>" alt="">
             </div>
-            <div class="col-md-6">
-                <div class="short-descr"><span>Characteristics</span></div>
+            <div class="col-md-6 short-descr">
+                <div><span>Characteristics</span></div>
                 <ul>
                     <li>Style: <?php echo $product->style; ?></li>
                     <li>Features: <?php echo $product->features; ?></li>
@@ -18,7 +18,7 @@ require 'header.php';
                     <li>Manufacturer country: <?php echo $product->manufacturer_country; ?></li>
                 </ul>
                 <div><h3>Price: <div><?php echo $product->price; ?></div></h3></div>
-                <a href="/basket/add_to_basket/id/<?php  echo $product->id; ?>" class="btn btn-primary col-md-4">Add to basket</a>
+                <a href="/basket/add_to_basket/id/<?php  echo $product->id; ?>" class="btn btn-primary col-md-5">Add to basket</a>
             </div>
         </div>
         <div class="row">
@@ -47,7 +47,9 @@ require 'header.php';
                             <form action="/product/add_review/id/<?php  echo $product->id; ?>" method="post">
                                 <textarea class="form-control" name="text_review" rows="3" placeholder="Please, log in and leave your review here" required></textarea><br>
                                 <button type="submit" class="btn btn-primary">Add review</button>
+                                <?php if (isset($_SESSION["review"])):?>
                                 <input type="hidden" name="review" value="<?php echo $_SESSION["review"]; ?>" />
+                                <?php endif; ?>
                             </form><br><hr>
                         </div>
                     </div>

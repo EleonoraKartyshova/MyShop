@@ -6,6 +6,7 @@
  * Time: 11:48
  */
 namespace MyShop\models;
+
 use Shop\core\Model;
 
 class ProductsModel extends Model

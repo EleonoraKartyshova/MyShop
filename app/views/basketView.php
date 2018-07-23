@@ -1,8 +1,9 @@
 <?php
+$page = 3;
 require 'header.php';
 ?>
-    <div class="container">
-        <div class="row basket">
+    <div class="container basket">
+        <div class="row">
             <div class="col-md-12">
                 <table class="table table-bordered table-hover">
                     <tr>
@@ -31,12 +32,13 @@ require 'header.php';
                 </table>
                 <form action="/order/place_an_order" method="post">
                     <button type="submit" class="btn btn-primary">Place an order</button>
+                    <?php if (isset($_SESSION["order"])):?>
                     <input type="hidden" name="order" value="<?php echo $_SESSION["order"]; ?>" />
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
     </div>
-
 <?php
 require 'footer.php';
 ?>
