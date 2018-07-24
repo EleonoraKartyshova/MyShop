@@ -39,7 +39,7 @@ class ProductModel extends Model
     {
         if (!Session::cookieExists())
         {
-            throw new AuthException();
+            throw new AuthException('User is not authorized', '4013');
         }
         Session::start();
         if (isset($_POST["text_review"]) && $_POST["review"] == $_SESSION["review"] )

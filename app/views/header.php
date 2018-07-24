@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>❤️ MyShop</title>
+    <title>MyShop</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -33,7 +33,7 @@
                 <form action="/auth/auth" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Enter yor email:</label>
-                        <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="example@com">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Enter your password:</label>
@@ -61,7 +61,7 @@
                     <form action="/registration/reg" method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail2">Enter yor email:</label>
-                            <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="Email">
+                            <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="example@com">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword2">Enter your password:</label>
@@ -101,12 +101,12 @@
                 <li><a class="mynavbar-btn" href="/basket/basket"><span class="middle <?php if (isset($page) && $page == 3) {echo ' mynavbar-active';} ?>">Basket</span></a></li>
                 <?php
                 if ($data_auth['auth'] && $data_auth['login']):?>
-                    <li><a class="mynavbar-btn" href="/history/orders_history"><span class="middle <?php if (isset($page) && $page == 4) {echo ' mynavbar-active';} ?>">Orders history</span></a></li>
+                    <li><a class="mynavbar-btn" href="/history"><span class="middle <?php if (isset($page) && $page == 4) {echo ' mynavbar-active';} ?>">Orders history</span></a></li>
                     <li><a class="mynavbar-btn" href="#"><?php echo $data_auth['login']; ?></a></li>
                     <li><form action='/auth/logout' method='post'><button class="mynavbar-exit" type='submit'>Log out</button></form></li>
                 <?php else:?>
-                    <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal">Log in</a></li>
-                    <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal1">Registration</a></li>
+                    <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal"><span class="middle">Log in</span></a></li>
+                    <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal1"><span class="middle">Registration</span></a></li>
 
                 <?php endif; ?>
             </ul>

@@ -15,7 +15,8 @@ class Session
     {
         session_save_path('/home/NIX/phpuser/test/project3/src/session');
     }
-    public static function setName($name) {
+    public static function setName($name)
+    {
         if (self::sessionExists()) {
             throw new SessException ('Session already started');
         }
@@ -25,9 +26,16 @@ class Session
     {
         return session_name();
     }
-    public static function getId() {}
-    public static function setId($id) {}
-    public static function cookieExists() {
+    public static function getId()
+    {
+        return session_id();
+    }
+    public static function setId($id)
+    {
+        session_id($id);
+    }
+    public static function cookieExists()
+    {
         if (isset($_COOKIE[self::getName()]))
         {
             return true;
@@ -45,19 +53,40 @@ class Session
             return false;
         }
     }
-    public static function start() {
+    public static function start()
+    {
         if (!self::sessionExists())
         {
             session_start();
             //setcookie(session_name(),'', time()+1440, '/' );
         }
     }
-    public static function destroy() {
+    public static function destroy()
+    {
         session_destroy();
     }
-    public static function setSavePath($path) {}
-    public static function set($value) {}
-    public static function get() {}
-    public static function contains($key) {}
-    public static function delete($key) {}
+    public static function setSavePath($path)
+    {
+        session_save_path($path);
+    }
+    public static function set($key, $value)
+    {
+        $_SESSION[$key] = $value;
+    }
+    public static function get()
+    {
+        return $_SESSION;
+    }
+    public static function contains($key)
+    {
+        if (isset($_SESSION[$key])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static function delete($key)
+    {
+        unset($_SESSION[$key]);
+    }
 }

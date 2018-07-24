@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: phpuser
- * Date: 12.07.18
- * Time: 11:47
+ * User: eleonora
+ * Date: 24.07.18
+ * Time: 15:56
  */
 namespace MyShop\models;
 
 use Shop\core\Model;
 
-class Error404Model extends Model
+class ErrorModel extends Model
 {
     protected $db_connect;
 }

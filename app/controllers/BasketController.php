@@ -9,6 +9,8 @@ namespace MyShop\controllers;
 
 use MyShop\models\BasketModel;
 use Shop\exceptions\AuthException;
+use Shop\logs\ShopLogger;
+use MyShop\controllers\ErrorController;
 
 class BasketController extends FrontController
 {
@@ -24,7 +26,10 @@ class BasketController extends FrontController
             $data2 = $obj->order_price($data);
             $this->view->generate('basketView.php', ["basket" => $data, "order_price" => $data2]);
         } catch (AuthException $e) {
-            $this->view->generate('errorBasketOrderView.php');
+            $controller = new ErrorController();
+            $data = $e->getCode();
+            $controller->action_index($data);
+            ShopLogger::write_log($e->getMessage());
         }
     }
     public function basket()

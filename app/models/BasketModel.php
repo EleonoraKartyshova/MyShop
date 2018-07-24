@@ -20,7 +20,7 @@ class BasketModel extends Model
     {
         if (!Session::cookieExists())
         {
-            throw new AuthException();
+            throw new AuthException('User is not authorized', '4011');
         }
         Session::start();
         $_SESSION['order'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));

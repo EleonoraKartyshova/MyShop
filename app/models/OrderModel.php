@@ -22,11 +22,11 @@ class OrderModel extends Model
     {
         if (!Session::cookieExists())
         {
-            throw new AuthException();
+            throw new AuthException('User is not authorized', '4012');
         }
         if (empty($_SESSION['basket']))
         {
-            throw new OrderException();
+            throw new OrderException('Shopping cart is empty', '405');
         }
 
         Session::start();

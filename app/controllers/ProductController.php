@@ -10,6 +10,7 @@ namespace MyShop\controllers;
 use Shop\core\Controller;
 use MyShop\models\ProductModel;
 use Shop\exceptions\AuthException;
+use Shop\logs\ShopLogger;
 
 class ProductController extends FrontController
 {
@@ -27,7 +28,10 @@ class ProductController extends FrontController
             $data = $obj->get_product($id);
             $this->view->generate('productView.php', $data);
         } catch (AuthException $e) {
-            $this->view->generate('errorBasketOrderView.php');
+            $controller = new ErrorController();
+            $data = $e->getCode();
+            $controller->action_index($data);
+            ShopLogger::write_log($e->getMessage());
         }
 
     }

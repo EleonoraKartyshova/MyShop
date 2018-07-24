@@ -11,6 +11,7 @@ use Shop\core\Controller;
 use MyShop\models\OrderModel;
 use Shop\exceptions\AuthException;
 use Shop\exceptions\OrderException;
+use Shop\logs\ShopLogger;
 
 class OrderController extends FrontController
 {
@@ -21,9 +22,15 @@ class OrderController extends FrontController
             $obj->place_an_order();
             $this->view->generate('orderView.php');
         } catch (AuthException $e) {
-            $this->view->generate('errorBasketOrderView.php');
+            $controller = new ErrorController();
+            $data = $e->getCode();
+            $controller->action_index($data);
+            ShopLogger::write_log($e->getMessage());
         } catch (OrderException $e) {
-            $this->view->generate('errorOrderView.php');
+            $controller = new ErrorController();
+            $data = $e->getCode();
+            $controller->action_index($data);
+            ShopLogger::write_log($e->getMessage());
         }
     }
 }

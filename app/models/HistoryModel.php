@@ -24,7 +24,7 @@ class HistoryModel extends Model
     {
         if (!Session::cookieExists())
         {
-            throw new AuthException();
+            throw new AuthException('User is not authorized', '401');
 
         }
         Session::start();

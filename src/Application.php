@@ -8,9 +8,9 @@
 
 namespace Shop;
 
-use MyShop\controllers\Error404Controller;
+use MyShop\controllers\ErrorController;
+use Shop\logs\ShopLogger;
 use Shop\exceptions\RouterException;
-//use MyShop\controllers\MainController;
 
 class Application
 {
@@ -19,8 +19,10 @@ class Application
         try{
             Router::route();
         } catch(RouterException $e){
-            $controller = new Error404Controller();
-            $controller->action_index();
+            $controller = new ErrorController();
+            $data = $e->getCode();
+            $controller->action_index($data);
+            ShopLogger::write_log($e->getMessage());
         }
     }
 }

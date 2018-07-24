@@ -9,17 +9,21 @@ namespace MyShop\controllers;
 
 use MyShop\models\HistoryModel;
 use Shop\exceptions\AuthException;
+use Shop\logs\ShopLogger;
 
 class HistoryController extends FrontController
 {
-    public function orders_history()
+    public function action_index()
     {
         $obj = new HistoryModel();
         try {
             $data = $obj->orders_history();
             $this->view->generate('ordersHistoryView.php', $data);
         } catch (AuthException $e) {
-            $this->view->generate('errorBasketOrderView.php');
+            $controller = new ErrorController();
+            $data = $e->getCode();
+            $controller->action_index($data);
+            ShopLogger::write_log($e->getMessage());
         }
     }
 }
