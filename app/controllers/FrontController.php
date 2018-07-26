@@ -19,11 +19,11 @@ class FrontController extends Controller
         parent::__construct();
         $this->view->data["data_auth"] = self::is_auth();
     }
-
     public static function is_auth()
     {
         $data = [];
-        if (Authentication::is_auth()){
+        if (Authentication::is_auth())
+        {
             $data['auth'] = true;
             $data['login'] = $_SESSION['login'];
         }else{
@@ -31,6 +31,5 @@ class FrontController extends Controller
             $data['login'] = false;
         }
         return $data;
-
     }
 }

@@ -25,7 +25,8 @@ class BasketModel extends Model
         $obj = new Products();
         $result = $obj->get_record_by_id($id);
         foreach ($result as $key => $product) {
-            if (!empty($_SESSION['basket'])) {
+            if (!empty($_SESSION['basket']))
+            {
                 $_SESSION['basket'] += [
                     $product->id => [
                         'picture' => $product->picture,
@@ -60,7 +61,8 @@ class BasketModel extends Model
             Session::start();
             $_SESSION['order'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));
         }
-        if (!isset($_SESSION['basket'])){
+        if (!isset($_SESSION['basket']))
+        {
             $_SESSION['basket'] = [];
         }
         return $_SESSION['basket'];

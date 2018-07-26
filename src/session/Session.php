@@ -42,7 +42,6 @@ class Session
         } else {
             return false;
         }
-
     }
     public static function sessionExists()
     {

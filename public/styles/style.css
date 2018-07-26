@@ -22,6 +22,9 @@ html, body {
     border-top: 1px solid #c0c0c0;
     padding: 20px;
 }
+.header {
+    margin-bottom: 70px;
+}
 .wrapper {
     margin-right: 5%;
     margin-left: 5%;

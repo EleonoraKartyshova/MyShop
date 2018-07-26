@@ -26,7 +26,6 @@ class OrderModel extends Model
         {
             throw new OrderException('Shopping cart is empty', '405');
         }
-
         Session::start();
         if (isset($_POST["order"]) && $_POST["order"] == $_SESSION["order"] )
         {
@@ -34,7 +33,6 @@ class OrderModel extends Model
             $obj->place_an_order($_SESSION['user_id']);
             $order_id = $obj->get_last_record_id();
             $obj = new OrdersProducts();
-
             foreach ($_SESSION['basket'] as $key=>$product){
                 $product_id = $key;
                 $obj->place_an_order($order_id, $product_id);

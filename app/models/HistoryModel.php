@@ -20,13 +20,11 @@ class HistoryModel extends Model
         if (!Session::cookieExists())
         {
             throw new AuthException('User is not authorized', '401');
-
         }
         Session::start();
         $user_id = $_SESSION['user_id'];
         $obj = new Orders();
         $data['orders'] = $obj->orders_history($user_id);
-
         return $data;
     }
 }

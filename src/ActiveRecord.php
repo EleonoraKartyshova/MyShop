@@ -46,26 +46,21 @@ class ActiveRecord
         $sql_fields = 'INSERT INTO '. $this->table_name . ' (';
         $sql_values = ') VALUES ' . '(';
         $sql_end = ')';
-
         $fields = $this->get_fields();
-
         foreach($fields as $field)
         {
             $sql_fields = $sql_fields . $field . ', ';
 
             $sql_values = $sql_values . "'" . $this->$field . "', ";
         }
-
         $sql_fields = substr($sql_fields, 0 , -2);
         $sql_values = substr($sql_values, 0 , -2);
         $sql = $sql_fields . $sql_values . $sql_end;
         $this->dbc->query($sql);
-
     }
-
-    public function get_id_by_value($table_name, $column, $value)
+    public function get_id_by_value($column, $value)
     {
-        return $this->dbc->query('SELECT `id` FROM ' . $table_name . ' WHERE ' . $column.'= ' . $value);
+        return $this->dbc->query('SELECT `id` FROM ' . $this->table_name . ' WHERE ' . $column.'= ' . $value);
     }
     public function get_last_record_id()
     {
@@ -77,9 +72,9 @@ class ActiveRecord
         $result = $result->id;
         return $result;
     }
-    public function get_column_by_id($table_name, $column, $id)
+    public function get_column_by_id($column, $id)
     {
-        $result = $this->dbc->query('SELECT `' . $column. '`` FROM ' . $table_name . ' WHERE id= ' . $id);
+        $result = $this->dbc->query('SELECT `' . $column. '`` FROM ' . $this->table_name . ' WHERE id= ' . $id);
         $result = $result->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }

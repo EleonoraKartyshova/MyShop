@@ -27,10 +27,8 @@ class ProductModel extends Model
         $data['product'] = $product->get_record_by_id($id)[0];
         $us_prod_rev = new UsersProductsReviews();
         $data['reviews'] = $us_prod_rev->get_reviews($id);
-
         return $data;
     }
-
     public function add_review($id)
     {
         if (!Session::cookieExists())

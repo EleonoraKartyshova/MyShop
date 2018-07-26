@@ -15,12 +15,6 @@ class Controller
 
     function __construct()
     {
-        //$this->model = new Model();
         $this->view = new View();
-    }
-
-    function defaultAction()
-    {
-        echo "Вызван action по умолчанию";
     }
 }

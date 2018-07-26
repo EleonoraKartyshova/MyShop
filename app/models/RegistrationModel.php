@@ -19,7 +19,8 @@ class RegistrationModel extends Model
         $users = $obj->get_all_records();
         $fl = true;
         foreach ($users as $key => $user) {
-            if ($new_login == $user->email) {
+            if ($new_login == $user->email)
+            {
                 $fl = false;
             }
         }

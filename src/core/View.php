@@ -13,7 +13,8 @@ class View
     function generate($template_view, $data = [])
     {
         $this->data = array_merge($this->data, $data);
-        if( is_array($this->data)) {
+        if( is_array($this->data))
+        {
 //            преобразуем элементы массива в переменные
             extract($this->data);
         }

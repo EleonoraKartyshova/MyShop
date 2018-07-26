@@ -13,12 +13,6 @@ use MyShop\controllers\FrontController;
 
 class ProductsController extends FrontController
 {
-//    public function action_index()
-//    {
-//        $obj = new ProductsModel();
-//        $data = $obj->get_all_rec();
-//        $this->view->generate('productsView.php', ["products" => $data]);
-//    }
     public function action_index()
     {
         $obj = new ProductsModel();

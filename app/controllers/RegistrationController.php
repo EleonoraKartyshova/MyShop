@@ -19,12 +19,11 @@ class RegistrationController extends FrontController
         $new_password = $_POST['password'];
         $new_phone_number = $_POST['phone_number'];
         $obj = new RegistrationModel();
-
         $data_auth = $obj->reg($new_login, $new_password, $new_phone_number);
         if (!empty($data_auth))
         {
             $this->view->generate('registrationView.php', ["data_auth" => $data_auth]);
-        }else{
+        } else {
             $this->view->generate('registrationView.php');
         }
     }
