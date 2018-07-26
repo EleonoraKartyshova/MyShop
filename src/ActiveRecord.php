@@ -1,58 +1,75 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: phpuser
- * Date: 16.07.18
- * Time: 12:32
+ * User: eleonora
+ * Date: 25.07.18
+ * Time: 15:27
  */
+
 namespace Shop;
 
 use \PDO;
 
-class MyPDO
+class ActiveRecord
 {
-    private $dbc;
+    protected $dbc;
+    protected $table_name;
+
     public function __construct()
     {
         $dbc = new PDO('mysql:host=localhost;dbname=myshop','root','elya12345');
         $this->dbc = $dbc;
     }
-    public function get_record_by_id($table_name, $id)
+    public function get_record_by_id($id)
     {
-        $result = $this->dbc->query('SELECT * FROM ' . $table_name . ' WHERE id= ' . $id);
+        $result = $this->dbc->query('SELECT * FROM ' . $this->table_name . ' WHERE id= ' . $id);
         $result = $result->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
-    public function get_all_records($table_name)
+    public function get_all_records()
     {
-        $result = $this->dbc->query('SELECT * FROM '. $table_name);
+        $result = $this->dbc->query('SELECT * FROM '. $this->table_name);
         $result = $result->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
-    public function add_record($table_name, $field_val)
+    public function get_fields()
     {
-        $sql_fields = 'INSERT INTO '. $table_name . ' (';
+        $fields = get_class_vars(get_class($this));
+        $fields = array_keys($fields);
+        $fields = array_slice( $fields, 3);
+        array_pop($fields);
+        array_pop($fields);
+        return $fields;
+    }
+    public function add_record()
+    {
+        $sql_fields = 'INSERT INTO '. $this->table_name . ' (';
         $sql_values = ') VALUES ' . '(';
         $sql_end = ')';
-        foreach($field_val as $field=>$value)
-        {
-            $sql_fields =  $sql_fields . $field . ', ';
 
-            $sql_values = $sql_values . "'" . $value . "', ";
+        $fields = $this->get_fields();
+
+        foreach($fields as $field)
+        {
+            $sql_fields = $sql_fields . $field . ', ';
+
+            $sql_values = $sql_values . "'" . $this->$field . "', ";
         }
+
         $sql_fields = substr($sql_fields, 0 , -2);
         $sql_values = substr($sql_values, 0 , -2);
         $sql = $sql_fields . $sql_values . $sql_end;
         $this->dbc->query($sql);
 
     }
+
     public function get_id_by_value($table_name, $column, $value)
     {
         return $this->dbc->query('SELECT `id` FROM ' . $table_name . ' WHERE ' . $column.'= ' . $value);
     }
-    public function get_last_record_id($table_name)
+    public function get_last_record_id()
     {
-        $last_rec = $this->dbc->query('SELECT * FROM ' . $table_name . ' WHERE   id = (SELECT MAX(id)  FROM ' . $table_name . ')');
+        $last_rec = $this->dbc->query('SELECT * FROM ' . $this->table_name . ' WHERE   id = (SELECT MAX(id)  FROM ' . $this->table_name . ')');
         $last_rec = $last_rec->fetchAll(PDO::FETCH_CLASS);
         foreach ($last_rec as $value){
             $result = $value;

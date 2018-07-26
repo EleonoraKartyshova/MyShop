@@ -33,7 +33,6 @@ class ProductController extends FrontController
             $controller->action_index($data);
             ShopLogger::write_log($e->getMessage());
         }
-
     }
     public function action_index()
     {

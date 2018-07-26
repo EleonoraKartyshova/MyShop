@@ -7,6 +7,8 @@
  */
 namespace MyShop\models;
 
+use MyShop\tables\Orders;
+use MyShop\tables\OrdersProducts;
 use Shop\core\Model;
 use Shop\session\Session;
 use Shop\exceptions\AuthException;
@@ -14,10 +16,6 @@ use Shop\exceptions\OrderException;
 
 class OrderModel extends Model
 {
-    public $table_name = 'orders';
-    public $additional_table_name = 'orders_products';
-    protected $db_connect;
-
     public function place_an_order()
     {
         if (!Session::cookieExists())
@@ -32,21 +30,17 @@ class OrderModel extends Model
         Session::start();
         if (isset($_POST["order"]) && $_POST["order"] == $_SESSION["order"] )
         {
-            $field = 'user_id';
-            $value = $_SESSION['user_id'];
-            $field_val = [$field => $value];
-            $this->db_connect->add_record($this->table_name, $field_val);
-            $field1 = 'order_id';
-            $field2 = 'product_id';
-            $value1 = $this->db_connect->get_last_record_id($this->table_name);
+            $obj = new Orders();
+            $obj->place_an_order($_SESSION['user_id']);
+            $order_id = $obj->get_last_record_id();
+            $obj = new OrdersProducts();
+
             foreach ($_SESSION['basket'] as $key=>$product){
-                $value2 = $key;
-                $field_val = [$field1 => $value1, $field2 => $value2];
-                $this->db_connect->add_record($this->additional_table_name, $field_val);
+                $product_id = $key;
+                $obj->place_an_order($order_id, $product_id);
             }
             $_SESSION["order"] = rand();
             $_SESSION['basket'] = [];
         }
-
     }
 }

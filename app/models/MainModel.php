@@ -11,5 +11,4 @@ use Shop\core\Model;
 
 class MainModel extends Model
 {
-    protected $db_connect;
 }

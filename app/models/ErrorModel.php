@@ -11,5 +11,4 @@ use Shop\core\Model;
 
 class ErrorModel extends Model
 {
-    protected $db_connect;
 }

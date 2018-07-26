@@ -5,7 +5,7 @@ require 'header.php';
     <div class="row">
         <div class="col-md-12">
             <?php if ($error == 404):?>
-                <img src="/images/giphy.gif" width="480" height="406" alt="Error 404!">
+                <img src="/images/giphy.gif" width="480" height="406" alt="Error 404! Cat not found">
             <?php endif; ?>
             <?php if ($error == 405):?>
                 <h2>Sorry, your shopping cart is empty!</h2>

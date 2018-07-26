@@ -28,9 +28,4 @@ class AuthController extends FrontController
     {
         return Authentication::get_login();
     }
-    public function get_all_records()
-    {
-        $obj = new AuthModel();
-        return $obj->get_all_records();
-    }
 }

@@ -7,25 +7,18 @@
  */
 namespace MyShop\models;
 
+use MyShop\tables\Users;
 use Shop\core\Model;
 use Shop\core\authentication\Authentication;
 use Shop\session\Session;
 
 class AuthModel extends Model
 {
-    public $table_name = 'users';
-    protected $db_connect;
-
-    public function get_all_records()
-    {
-        $result = $this->db_connect->get_all_records($this->table_name);
-        return $result;
-    }
-
     public function auth($new_login, $new_password)
     {
         $data_auth = array();
-        $users = $this->db_connect->get_all_records($this->table_name);
+        $obj = new Users();
+        $users = $obj->get_all_records();
         foreach ($users as $key => $user) {
             if (Authentication::auth($new_login, $new_password, $user->email, $user->passw)) {
                 Session::start();
@@ -41,5 +34,4 @@ class AuthModel extends Model
         }
         return $data_auth;
     }
-
 }

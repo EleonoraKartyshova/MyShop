@@ -8,15 +8,14 @@
 namespace MyShop\models;
 
 use Shop\core\Model;
+use MyShop\tables\Products;
 
 class ProductsModel extends Model
 {
-    public $table_name = 'products';
-    protected $db_connect;
-
-    public function get_all_rec()
+    public function get_products()
     {
-        $data = $this->db_connect->get_all_records($this->table_name);
+        $obj = new Products();
+        $data = $obj->get_all_records();
         return $data;
     }
 }

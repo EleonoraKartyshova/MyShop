@@ -10,12 +10,10 @@ namespace MyShop\models;
 use Shop\core\Model;
 use Shop\exceptions\AuthException;
 use Shop\session\Session;
+use MyShop\tables\Products;
 
 class BasketModel extends Model
 {
-    public $table_name = 'products';
-    protected $db_connect;
-
     public function add_to_basket($id)
     {
         if (!Session::cookieExists())
@@ -24,7 +22,8 @@ class BasketModel extends Model
         }
         Session::start();
         $_SESSION['order'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));
-        $result = $this->db_connect->get_record_by_id($this->table_name, $id);
+        $obj = new Products();
+        $result = $obj->get_record_by_id($id);
         foreach ($result as $key => $product) {
             if (!empty($_SESSION['basket'])) {
                 $_SESSION['basket'] += [

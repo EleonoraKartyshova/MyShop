@@ -7,17 +7,16 @@
  */
 namespace MyShop\models;
 
+use MyShop\tables\Users;
 use Shop\core\Model;
 use Shop\session\Session;
 
 class RegistrationModel extends Model
 {
-    public $table_name = 'users';
-    protected $db_connect;
-
-    public function reg($new_login, $new_password, $new_phone_number)
+    public function reg($new_login, $new_password, $new_phone_number, $new_role = 0)
     {
-        $users = $this->db_connect->get_all_records($this->table_name);
+        $obj = new Users();
+        $users = $obj->get_all_records();
         $fl = true;
         foreach ($users as $key => $user) {
             if ($new_login == $user->email) {
@@ -27,16 +26,8 @@ class RegistrationModel extends Model
         $data_auth = [];
         if ($fl)
         {
-            $field1 = 'email';
-            $field2 = 'passw';
-            $field3 = 'phone_number';
-            $value1 = $new_login;
-            $value2 = $new_password;
-            $value3 = $new_phone_number;
-            $field_val = [$field1 => $value1, $field2 => $value2, $field3 => $value3];
-            $this->db_connect->add_record($this->table_name, $field_val);
-
-            $user_id = $this->db_connect->get_last_record_id($this->table_name);
+            $obj->registration($new_login, $new_password, $new_phone_number, $new_role);
+            $user_id = $obj->get_last_record_id();
             Session::start();
             $_SESSION['login'] = $new_login;
             $_SESSION['password'] = $new_password;
