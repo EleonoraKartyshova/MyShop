@@ -9,6 +9,7 @@
 namespace Shop;
 
 use \PDO;
+use Shop\Singleton;
 
 class ActiveRecord
 {
@@ -17,7 +18,8 @@ class ActiveRecord
 
     public function __construct()
     {
-        $dbc = new PDO('mysql:host=localhost;dbname=myshop','root','elya12345');
+        Singleton::getInstance();
+        $dbc = Singleton::getInstance();
         $this->dbc = $dbc;
     }
     public function get_record_by_id($id)

@@ -30,16 +30,16 @@ class BasketModel extends Model
                 $_SESSION['basket'] += [
                     $product->id => [
                         'picture' => $product->picture,
-                        'title' => $product->title,
-                        'price' => $product->price
+                        'title'   => $product->title,
+                        'price'   => $product->price
                     ]
                 ];
             } else {
                 $_SESSION['basket'] = [
                     $product->id => [
                         'picture' => $product->picture,
-                        'title' => $product->title,
-                        'price' => $product->price
+                        'title'   => $product->title,
+                        'price'   => $product->price
                     ]
                 ];
             }
