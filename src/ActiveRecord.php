@@ -18,7 +18,6 @@ class ActiveRecord
 
     public function __construct()
     {
-        Singleton::getInstance();
         $dbc = Singleton::getInstance();
         $this->dbc = $dbc;
     }

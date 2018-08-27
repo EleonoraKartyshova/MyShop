@@ -29,10 +29,10 @@ class Singleton
 
     public static function getInstance()
     {
-        if (self::$instance != null) {
-            return self::$instance;
+        if (self::$instance === null) {
+            new self();
         }
 
-        return new self;
+        return self::$instance;
     }
 }

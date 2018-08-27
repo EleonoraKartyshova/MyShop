@@ -8,7 +8,7 @@
 
 namespace Shop;
 
-use Shop\exceptions\RouterException;
+use Shop\Exceptions\RouterException;
 
 class Router
 {
@@ -21,8 +21,8 @@ class Router
         {
             $controllerName = array_shift($route);
         }
-        $class_name = 'MyShop\\controllers\\' . ucfirst($controllerName) . 'Controller';
-        $file = '../app/controllers/' . ucfirst($controllerName) . 'Controller.php';
+        $class_name = 'MyShop\\Controllers\\' . ucfirst($controllerName) . 'Controller';
+        $file = '../app/Controllers/' . ucfirst($controllerName) . 'Controller.php';
         if (file_exists($file))
         {
             $controller = new $class_name();
