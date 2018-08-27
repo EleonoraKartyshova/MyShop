@@ -22,11 +22,10 @@ class FrontController extends Controller
     public static function is_auth()
     {
         $data = [];
-        if (Authentication::is_auth())
-        {
+        if (Authentication::is_auth()) {
             $data['auth'] = true;
             $data['login'] = Authentication::get_login();
-        }else{
+        } else {
             $data['auth'] = false;
             $data['login'] = false;
         }

@@ -32,9 +32,6 @@ require 'header.php';
                 </table>
                 <form action="/order/place_an_order" method="post">
                     <button type="submit" class="btn btn-primary">Place an order</button>
-                    <?php if (isset($_SESSION["order"])):?>
-                    <input type="hidden" name="order" value="<?php echo $_SESSION["order"]; ?>" />
-                    <?php endif; ?>
                 </form>
             </div>
         </div>

@@ -24,8 +24,4 @@ class AuthController extends FrontController
         $data_auth = $obj->auth($new_login, $new_password);
         $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
     }
-    public function get_login()
-    {
-        return Authentication::get_login();
-    }
 }

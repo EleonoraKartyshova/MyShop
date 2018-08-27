@@ -17,12 +17,11 @@ class HistoryModel extends Model
 {
     public function orders_history()
     {
-        if (!Session::cookieExists())
-        {
+        if (!Session::cookieExists()) {
             throw new AuthException('User is not authorized', '401');
         }
         Session::start();
-        $user_id = $_SESSION['user_id'];
+        $user_id = Session::get_data('user_id');
         $obj = new Orders();
         $data['orders'] = $obj->orders_history($user_id);
         return $data;

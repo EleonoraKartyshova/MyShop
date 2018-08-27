@@ -18,27 +18,21 @@ class OrderModel extends Model
 {
     public function place_an_order()
     {
-        if (!Session::cookieExists())
-        {
+        if (!Session::cookieExists()) {
             throw new AuthException('User is not authorized', '4012');
         }
-        if (empty($_SESSION['basket']))
-        {
+        if (empty(Session::get_data('basket'))) {
             throw new OrderException('Shopping cart is empty', '405');
         }
         Session::start();
-        if (isset($_POST["order"]) && $_POST["order"] == $_SESSION["order"] )
-        {
-            $obj = new Orders();
-            $obj->place_an_order($_SESSION['user_id']);
-            $order_id = $obj->get_last_record_id();
-            $obj = new OrdersProducts();
-            foreach ($_SESSION['basket'] as $key=>$product){
-                $product_id = $key;
-                $obj->place_an_order($order_id, $product_id);
-            }
-            $_SESSION["order"] = rand();
-            $_SESSION['basket'] = [];
+        $obj = new Orders();
+        $obj->place_an_order(Session::get_data('user_id'));
+        $order_id = $obj->get_last_record_id();
+        $obj = new OrdersProducts();
+        foreach (Session::get_data('basket') as $key => $product) {
+            $product_id = $key;
+            $obj->place_an_order($order_id, $product_id);
         }
+        Session::set_data('basket', []);
     }
 }

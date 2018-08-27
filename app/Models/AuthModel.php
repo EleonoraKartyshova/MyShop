@@ -20,14 +20,13 @@ class AuthModel extends Model
         $obj = new Users();
         $users = $obj->get_all_records();
         foreach ($users as $key => $user) {
-            if (Authentication::auth($new_login, $new_password, $user->email, $user->passw))
-            {
+            if (Authentication::auth($new_login, $new_password, $user->email, $user->passw)) {
                 Session::start();
-                $_SESSION['login'] = $new_login;
-                $_SESSION['password'] = $new_password;
-                $_SESSION['user_id'] = $user->id;
+                Session::set_data('login', $new_login);
+                Session::set_data('password', $new_password);
+                Session::set_data('user_id', $user->id);
                 $data_auth['auth'] = true;
-                $data_auth['login'] =$_SESSION['login'];
+                $data_auth['login'] = Authentication::get_login();
                 return $data_auth;
             } else {
                 $data_auth['auth'] = false;

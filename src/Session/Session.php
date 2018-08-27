@@ -36,8 +36,7 @@ class Session
     }
     public static function cookieExists()
     {
-        if (isset($_COOKIE[self::getName()]))
-        {
+        if (isset($_COOKIE[self::getName()])) {
             return true;
         } else {
             return false;
@@ -45,8 +44,7 @@ class Session
     }
     public static function sessionExists()
     {
-        if (!empty($_SESSION))
-        {
+        if (!empty($_SESSION)) {
             return true;
         } else {
             return false;
@@ -54,8 +52,7 @@ class Session
     }
     public static function start()
     {
-        if (!self::sessionExists())
-        {
+        if (!self::sessionExists()) {
             session_start();
             //setcookie(session_name(),'', time()+1440, '/' );
         }
@@ -71,6 +68,10 @@ class Session
     public static function set_data($key, $value)
     {
         $_SESSION[$key] = $value;
+    }
+    public static function add_data($key, $value)
+    {
+        $_SESSION[$key] += $value;
     }
     public static function get_data($key)
     {
@@ -88,8 +89,12 @@ class Session
             return false;
         }
     }
-    public static function delete($key)
+    public static function delete($key, $key2 = null)
     {
-        unset($_SESSION[$key]);
+        if (isset($key2)) {
+            unset($_SESSION[$key][$key2]);
+        } else {
+            unset($_SESSION[$key]);
+        }
     }
 }

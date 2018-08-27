@@ -18,10 +18,9 @@ class ProductModel extends Model
 {
     public function get_product($id)
     {
-        if (Session::cookieExists())
-        {
+        if (Session::cookieExists()) {
             Session::start();
-            $_SESSION['review'] = md5(date('d.m.Y H:i:s').rand(1, 1000000));
+            Session::set_data('review', md5(date('d.m.Y H:i:s').rand(1, 1000000)));
         }
         $product = new Products();
         $data['product'] = $product->get_record_by_id($id)[0];
@@ -31,16 +30,14 @@ class ProductModel extends Model
     }
     public function add_review($id)
     {
-        if (!Session::cookieExists())
-        {
+        if (!Session::cookieExists()) {
             throw new AuthException('User is not authorized', '4013');
         }
         Session::start();
         $obj = new UsersProductsReviews();
-        if (isset($_POST["text_review"]) && $_POST["review"] == $_SESSION["review"] )
-        {
-            $obj->add_review($id, $_SESSION['user_id'], $_POST['text_review']);
-            $_SESSION["review"] = rand();
+        if (isset($_POST["text_review"]) && $_POST["review"] == Session::get_data("review")) {
+            $obj->add_review($id, Session::get_data('user_id'), $_POST['text_review']);
+            Session::set_data("review", rand());
         }
     }
 }

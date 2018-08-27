@@ -8,6 +8,7 @@
 namespace MyShop\Models;
 
 use MyShop\Tables\Users;
+use Shop\Core\Authentication\Authentication;
 use Shop\Core\Model;
 use Shop\Session\Session;
 
@@ -19,22 +20,20 @@ class RegistrationModel extends Model
         $users = $obj->get_all_records();
         $fl = true;
         foreach ($users as $key => $user) {
-            if ($new_login == $user->email)
-            {
+            if ($new_login == $user->email) {
                 $fl = false;
             }
         }
         $data_auth = [];
-        if ($fl)
-        {
+        if ($fl) {
             $obj->registration($new_login, $new_password, $new_phone_number, $new_role);
             $user_id = $obj->get_last_record_id();
             Session::start();
-            $_SESSION['login'] = $new_login;
-            $_SESSION['password'] = $new_password;
-            $_SESSION['user_id'] = $user_id;
+            Session::set_data('login', $new_login);
+            Session::set_data('password', $new_password);
+            Session::set_data('user_id', $user_id);
             $data_auth['auth'] = true;
-            $data_auth['login'] =$_SESSION['login'];
+            $data_auth['login'] = Authentication::get_login();
         }
         return $data_auth;
     }
