@@ -7,7 +7,7 @@
  */
 
 namespace MyShop\Controllers;
-use Shop\Core\Authentication\Authentication;
+use MyShop\Service\Authentication;
 use Shop\Core\Controller;
 use MyShop\Models\RegistrationModel;
 
@@ -20,11 +20,11 @@ class RegistrationController extends FrontController
         $new_phone_number = $_POST['phone_number'];
         $obj = new RegistrationModel();
         $data_auth = $obj->reg($new_login, $new_password, $new_phone_number);
-        if (!empty($data_auth))
-        {
+        if (!empty($data_auth)) {
+            Authentication::auth($data_auth);
             $this->view->generate('registrationView.php', ["data_auth" => $data_auth]);
         } else {
-            $this->view->generate('registrationView.php');
+            $this->view->generate('mainView.php');
         }
     }
 }

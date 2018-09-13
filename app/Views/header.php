@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MyShop</title>
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -33,11 +34,11 @@
                 <form action="/auth/auth" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Enter yor email:</label>
-                        <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="example@com">
+                        <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="example@com" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Enter your password:</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -61,15 +62,15 @@
                     <form action="/registration/reg" method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail2">Enter yor email:</label>
-                            <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="example@com">
+                            <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="example@com" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword2">Enter your password:</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword3">Enter your phone number:</label>
-                            <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="Phone number">
+                            <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="Phone number" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

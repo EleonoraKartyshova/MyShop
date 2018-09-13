@@ -8,9 +8,11 @@
 namespace MyShop\Controllers;
 
 use MyShop\Models\BasketModel;
+use MyShop\Service\Authentication;
 use Shop\Exceptions\AuthException;
-use Shop\logs\ShopLogger;
+use Shop\Logs\ShopLogger;
 use MyShop\Controllers\ErrorController;
+use MyShop\Service\Basket;
 
 class BasketController extends FrontController
 {
@@ -20,10 +22,14 @@ class BasketController extends FrontController
     }
     public function add_to_basket($id)
     {
-        $obj = new BasketModel();
         try {
-            $data = $obj->add_to_basket($id);
-            $data2 = $obj->order_price($data);
+            if (!Authentication::is_auth()) {
+                throw new AuthException('User is not authorized', '4011');
+            }
+            $obj = new BasketModel();
+            $basket_product = $obj->add_to_basket($id);
+            $data = Basket::add_to_basket($basket_product);
+            $data2 = Basket::order_price($data);
             $this->view->generate('basketView.php', ["basket" => $data, "order_price" => $data2]);
         } catch (AuthException $e) {
             $controller = new ErrorController();
@@ -34,16 +40,14 @@ class BasketController extends FrontController
     }
     public function basket()
     {
-        $obj = new BasketModel();
-        $data = $obj->basket();
-        $data2 = $obj->order_price($data);
+        $data = Basket::get_basket();
+        $data2 = Basket::order_price($data);
         $this->view->generate('basketView.php', ["basket" => $data, "order_price" => $data2]);
     }
     public function delete_from_basket($id)
     {
-        $obj = new BasketModel();
-        $data = $obj->delete_from_basket($id);
-        $data2 = $obj->order_price($data);
+        $data = Basket::delete_from_basket($id);
+        $data2 = Basket::order_price($data);
         $this->view->generate('basketView.php', ["basket" => $data, "order_price" => $data2]);
     }
 }

@@ -3,10 +3,9 @@ html, body {
     margin: 0;
     padding: 0;
 }
-.container {
-    width: 85% !important;
-}
+
 .mywrap {
+    max-width: 1920px;
     min-height: 100%;
     margin-bottom: -50px;
     padding-bottom: 50px;
@@ -26,39 +25,40 @@ html, body {
     margin-bottom: 70px;
 }
 .wrapper {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 20px;
-    width: 100%;
+    /*margin-top: 20px;*/
+    padding: 20px;
 }
-.products {
-    width: 30%;
-    height: 400px;
+.product-wrapper {
+    padding: 10px;
+}
+.product {
     border: 1px solid #c0c0c0;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    margin-right: 25px;
     padding: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
-.product-item {
+.product-img {
     border: 1px solid black;
     margin: 10px 0 10px 0;
 }
-.product-item img {
-
-    height: 300px;
-}
-.products span {
+.product span {
     font-weight: bold;
     border-bottom: 2px solid black;
 }
 .prod-name {
+    margin-left: 10px;
     font-size: 30px;
     font-weight: bold;
     border-bottom: 2px solid black;
 }
+.product-card_wrapper {
+
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;*/
+}
 .card-img {
-    height: 600px;
+    max-height: 550px;
     margin-top: 20px;
 }
 .tab-description-review {
@@ -77,14 +77,15 @@ html, body {
     margin: 20px;
 }
 .basket-row img{
-    height: 200px;
+    max-height: 200px;
 }
 .basket {
-    width: 50% !important;
+    max-width: 700px;
+    /*width: 80% !important;*/
     margin: 0 auto;
 }
 .orders-history {
-    width: 60% !important;
+    max-width: 700px;
     margin: 0 auto;
 }
 .navbar-brand img
@@ -104,7 +105,7 @@ html, body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#cccccc');
     border: 1px solid #777;
     padding: 0 1.5em;
-    margin: 0.5em;
+    /*margin: 0.5em;*/
     font: bold 1em/2em Arial, Helvetica;
     text-decoration: none;
     color: #333;
@@ -156,10 +157,6 @@ html, body {
 .basket-button-delete:before {
     content: "\2718";
 }
-.basket-button-save:before
-{
-    content: "\2714";
-}
 .mynavbar-active {
     border-bottom: 2px solid #ffffff;
 }
@@ -200,5 +197,11 @@ html, body {
     color: #337ab7;
 }
 .main-content {
-    width: 70% !important;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.product-button_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

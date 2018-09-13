@@ -25,7 +25,7 @@ class ActiveRecord
     {
         $result = $this->dbc->query('SELECT * FROM ' . $this->table_name . ' WHERE id= ' . $id);
         $result = $result->fetchAll(PDO::FETCH_CLASS);
-        return $result;
+        return $result[0];
     }
     public function get_all_records()
     {
@@ -37,7 +37,7 @@ class ActiveRecord
     {
         $fields = get_class_vars(get_class($this));
         $fields = array_keys($fields);
-        $fields = array_slice( $fields, 3);
+        $fields = array_slice($fields, 3);
         array_pop($fields);
         array_pop($fields);
         return $fields;
@@ -48,10 +48,8 @@ class ActiveRecord
         $sql_values = ') VALUES ' . '(';
         $sql_end = ')';
         $fields = $this->get_fields();
-        foreach($fields as $field)
-        {
+        foreach($fields as $field) {
             $sql_fields = $sql_fields . $field . ', ';
-
             $sql_values = $sql_values . "'" . $this->$field . "', ";
         }
         $sql_fields = substr($sql_fields, 0 , -2);
@@ -67,7 +65,7 @@ class ActiveRecord
     {
         $last_rec = $this->dbc->query('SELECT * FROM ' . $this->table_name . ' WHERE   id = (SELECT MAX(id)  FROM ' . $this->table_name . ')');
         $last_rec = $last_rec->fetchAll(PDO::FETCH_CLASS);
-        foreach ($last_rec as $value){
+        foreach ($last_rec as $value) {
             $result = $value;
         }
         $result = $result->id;

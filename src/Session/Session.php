@@ -67,15 +67,22 @@ class Session
     }
     public static function set_data($key, $value)
     {
+        //self::start();
         $_SESSION[$key] = $value;
     }
     public static function add_data($key, $value)
     {
+        //self::start();
         $_SESSION[$key] += $value;
     }
     public static function get_data($key)
     {
-        return $_SESSION[$key];
+        //self::start();
+        if (isset($_SESSION[$key])) {
+            return $_SESSION[$key];
+        } else {
+            return false;
+        }
     }
     public static function get()
     {

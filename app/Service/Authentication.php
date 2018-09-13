@@ -1,13 +1,17 @@
 <?php
-namespace Shop\Core\Authentication;
+namespace MyShop\Service;
 
 use Shop\Session\Session;
+
 class Authentication
 {
-    public static function auth($new_login, $new_password, $login, $password)
+    public static function auth($data_auth)
     {
-        if ($new_login == $login && $new_password == $password)
-        {
+        if ($data_auth['auth']) {
+            Session::start();
+            Session::set_data('login', $data_auth['login']);
+            Session::set_data('password', $data_auth['password']);
+            Session::set_data('user_id', $data_auth['user_id']);
             return true;
         } else {
             return false;
@@ -15,8 +19,7 @@ class Authentication
     }
     public static function is_auth()
     {
-        if(Session::cookieExists())
-        {
+        if(Session::cookieExists()) {
             Session::start();
             return true;
         } else {
@@ -26,6 +29,10 @@ class Authentication
     public static function get_login()
     {
         return Session::get_data('login');
+    }
+    public static function get_user_id()
+    {
+        return Session::get_data('user_id');
     }
     public static function logout()
     {

@@ -8,16 +8,21 @@
 namespace MyShop\Controllers;
 
 use MyShop\Models\HistoryModel;
+use MyShop\Service\Authentication;
 use Shop\Exceptions\AuthException;
-use Shop\logs\ShopLogger;
+use Shop\Logs\ShopLogger;
 
 class HistoryController extends FrontController
 {
     public function action_index()
     {
-        $obj = new HistoryModel();
         try {
-            $data = $obj->orders_history();
+            if (!Authentication::is_auth()) {
+                throw new AuthException('User is not authorized', '401');
+            }
+            $obj = new HistoryModel();
+            $user_id = Authentication::get_user_id();
+            $data = $obj->orders_history($user_id);
             $this->view->generate('ordersHistoryView.php', $data);
         } catch (AuthException $e) {
             $controller = new ErrorController();

@@ -5,7 +5,7 @@
  * Date: 09.07.18
  * Time: 18:16
  */
-namespace Shop\logs;
+namespace Shop\Logs;
 
 //use \Monolog\Logger;
 

@@ -9,7 +9,7 @@
 namespace MyShop\Controllers;
 
 use Shop\Core\Controller;
-use Shop\Core\Authentication\Authentication;
+use MyShop\Service\Authentication;
 use Shop\Core\View;
 
 class FrontController extends Controller

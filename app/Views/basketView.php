@@ -17,7 +17,7 @@ require 'header.php';
                         foreach ($basket as $key => $product):
                             ?>
                             <tr  class="basket-row">
-                                <td><img src="<?php echo $product['picture']; ?>" alt=""></td>
+                                <td><img class="img-responsive" src="<?php echo $product['picture']; ?>" alt=""></td>
                                 <td><?php echo $product['title']; ?></td>
                                 <td><?php echo $product['price']; ?></td>
                                 <td><a href="/basket/delete_from_basket/id/<?php echo $key;?>" class="basket-button basket-button-delete">Delete</a></td>

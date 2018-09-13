@@ -7,8 +7,9 @@
  */
 namespace MyShop\Controllers;
 
-use Shop\Core\Authentication\Authentication;
+use MyShop\Service\Authentication;
 use MyShop\Models\AuthModel;
+use Shop\Exceptions\AuthException;
 
 class AuthController extends FrontController
 {
@@ -22,6 +23,7 @@ class AuthController extends FrontController
         $new_password = $_POST['password'];
         $obj = new AuthModel();
         $data_auth = $obj->auth($new_login, $new_password);
+        Authentication::auth($data_auth);
         $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
     }
 }

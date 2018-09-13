@@ -9,7 +9,7 @@
 namespace Shop;
 
 use MyShop\Controllers\ErrorController;
-use Shop\logs\ShopLogger;
+use Shop\Logs\ShopLogger;
 use Shop\Exceptions\RouterException;
 
 class Application

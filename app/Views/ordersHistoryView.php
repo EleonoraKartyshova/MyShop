@@ -17,7 +17,7 @@ require 'header.php';
                         foreach ($orders as $key => $order):
                             ?>
                             <tr  class="basket-row">
-                                <td><img src="<?php echo $order->picture; ?>" alt=""></td>
+                                <td><img class="img-responsive" src="<?php echo $order->picture; ?>" alt=""></td>
                                 <td><?php echo $order->title; ?></td>
                                 <td><?php echo $order->price; ?></td>
                                 <td><?php echo $order->created_at; ?></td>

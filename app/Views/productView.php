@@ -2,12 +2,12 @@
 require 'header.php';
 ?>
     <div class="container main-content">
-        <div class="row">
+        <div class="row product-card_wrapper">
             <div><span class="prod-name"><?php echo $product->title; ?></span></div>
-            <div class="col-md-6">
-                <img class="card-img" src="<?php echo $product->picture; ?>" alt="">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <img class="card-img img-responsive" src="<?php echo $product->picture; ?>" alt="">
             </div>
-            <div class="col-md-6 short-descr">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 short-descr">
                 <div><span>Characteristics</span></div>
                 <ul>
                     <li>Style: <?php echo $product->style; ?></li>
