@@ -13,10 +13,10 @@ use MyShop\Controllers\FrontController;
 
 class ProductsController extends FrontController
 {
-    public function action_index()
+    public function dresses($category = null)
     {
         $obj = new ProductsModel();
-        $data = $obj->get_products();
-        $this->view->generate('productsView.php', ["products" => $data]);
+        $data = $obj->get_products($category);
+        $this->view->generate('productsView.php', ["products" => $data, "category" => $category]);
     }
 }

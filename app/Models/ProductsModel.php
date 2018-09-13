@@ -12,10 +12,14 @@ use MyShop\Tables\Products;
 
 class ProductsModel extends Model
 {
-    public function get_products()
+    public function get_products($category)
     {
         $obj = new Products();
-        $data = $obj->get_all_records();
+        if ($category == 'all') {
+            $data = $obj->get_all_records();
+        } else {
+            $data = $obj->get_all_records_by_value('category', $category);
+        }
         return $data;
     }
 }

@@ -33,6 +33,13 @@ class ActiveRecord
         $result = $result->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
+    public function get_all_records_by_value($field, $value)
+    {
+        $sql = 'SELECT * FROM ' . $this->table_name . ' WHERE ' . $field." = '". $value ."'";
+        $result = $this->dbc->query($sql);
+        $result = $result->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
     public function get_fields()
     {
         $fields = get_class_vars(get_class($this));

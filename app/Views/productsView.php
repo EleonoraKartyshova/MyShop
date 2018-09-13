@@ -3,6 +3,7 @@ $page = 2;
 require 'header.php';
 ?>
 <div class="container">
+    <h4>Category: <?php echo $category; ?> dresses</h4>
     <div class="row wrapper">
         <?php
         foreach ($products as $key => $product):

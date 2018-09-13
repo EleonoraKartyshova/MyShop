@@ -10,6 +10,7 @@ require 'header.php';
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 short-descr">
                 <div><span>Characteristics</span></div>
                 <ul>
+                    <li>Category: <?php echo $product->category; ?></li>
                     <li>Style: <?php echo $product->style; ?></li>
                     <li>Features: <?php echo $product->features; ?></li>
                     <li>Fabric material: <?php echo $product->fabric_material; ?></li>

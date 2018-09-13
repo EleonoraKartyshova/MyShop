@@ -95,18 +95,37 @@
             <a class="navbar-brand mynavbar-brand" href="/main"><img src="/images/sherri-hill-logo1.jpg" alt="SHERRY HILL"></a>
         </div>
 
+
+
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a class="mynavbar-btn" href="/products"><span class="middle <?php if (isset($page) && $page == 2) {echo ' mynavbar-active';} ?>">Catalog</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle mynavbar-btn" data-toggle="dropdown">
+                        <span class="middle <?php if (isset($page) && $page == 2) {echo ' mynavbar-active';} ?>">Catalog</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu mynavbar-btn_dropdown">
+                        <li><a href="/products/dresses/category/wedding">Wedding dresses</a></li>
+                        <li><a href="/products/dresses/category/evening">Evening dresses</a></li>
+                        <li><a href="/products/dresses/category/cocktail">Cocktail dresses</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/products/dresses/category/all">All dresses</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
                 <li><a class="mynavbar-btn" href="/basket/basket"><span class="middle <?php if (isset($page) && $page == 3) {echo ' mynavbar-active';} ?>">Basket</span></a></li>
+                <li class="divider"></li>
                 <?php
                 if ($data_auth['auth'] && $data_auth['login']):?>
                     <li><a class="mynavbar-btn" href="/history"><span class="middle <?php if (isset($page) && $page == 4) {echo ' mynavbar-active';} ?>">Orders history</span></a></li>
+                    <li class="divider"></li>
                     <li><a class="mynavbar-btn" href="#"><?php echo $data_auth['login']; ?></a></li>
+                    <li class="divider"></li>
                     <li><form action='/auth/logout' method='post'><button class="mynavbar-exit" type='submit'>Log out</button></form></li>
                 <?php else:?>
                     <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal"><span class="middle">Log in</span></a></li>
+                    <li class="divider"></li>
                     <li><a class="mynavbar-btn" href="#" data-toggle="modal" data-target="#myModal1"><span class="middle">Registration</span></a></li>
 
                 <?php endif; ?>

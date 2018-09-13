@@ -14,6 +14,7 @@ class Products extends ActiveRecord
     protected $dbc;
     protected $table_name = 'products';
     public $id;
+    public $category;
     public $title;
     public $picture;
     public $quantity_in_stock;

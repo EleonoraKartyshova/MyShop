@@ -25,7 +25,6 @@ html, body {
     margin-bottom: 70px;
 }
 .wrapper {
-    /*margin-top: 20px;*/
     padding: 20px;
 }
 .product-wrapper {
@@ -50,12 +49,6 @@ html, body {
     font-size: 30px;
     font-weight: bold;
     border-bottom: 2px solid black;
-}
-.product-card_wrapper {
-
-    /*display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;*/
 }
 .card-img {
     max-height: 550px;
@@ -105,7 +98,6 @@ html, body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#cccccc');
     border: 1px solid #777;
     padding: 0 1.5em;
-    /*margin: 0.5em;*/
     font: bold 1em/2em Arial, Helvetica;
     text-decoration: none;
     color: #333;
@@ -165,6 +157,17 @@ html, body {
 }
 .mynavbar-btn {
     color: #fff !important;
+    background-color: #337ab7 !important;
+}
+.mynavbar-btn:active {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+}
+.divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
 }
 .mynavbar-brand {
     margin: 0 !important;
