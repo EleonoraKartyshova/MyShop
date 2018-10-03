@@ -41,7 +41,7 @@ class Router
         $paramName = null;
         if (!empty($route[0]))
         {
-            $params = array();
+            $params = [];
             for ($i = 0; count($route) > 0; $i++)
             {
                 if ($i % 2 == 0)
@@ -56,7 +56,7 @@ class Router
         }
         if(!empty($params[$paramName]))
         {
-            $controller->$actionName($params[$paramName]);
+            $controller->$actionName($params);
         } else {
                 $controller->$actionName();
         }

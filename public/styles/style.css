@@ -3,7 +3,6 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
 .mywrap {
     max-width: 1920px;
     min-height: 100%;
@@ -27,6 +26,19 @@ html, body {
 .wrapper {
     padding: 20px;
 }
+.wrapper-products_filters {
+    /*padding: 0 20px;*/
+}
+.wrapper-products_filters-item {
+    padding: 0 5px !important;
+}
+.wrapper-products_filters-title {
+    padding: 0 5px !important;
+    margin: 10px 0 0 0 !important;
+}
+.wrapper-products_search-title {
+    font-style: italic;
+}
 .product-wrapper {
     padding: 10px;
 }
@@ -37,12 +49,13 @@ html, body {
     margin-bottom: 20px;
 }
 .product-img {
-    border: 1px solid black;
-    margin: 10px 0 10px 0;
+    border: 1px solid grey;
+    margin: 10px 20px 10px 20px;
+    overflow: hidden;
 }
-.product span {
+.product-title {
     font-weight: bold;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid dimgrey;
 }
 .prod-name {
     margin-left: 10px;
@@ -62,7 +75,7 @@ html, body {
     margin-top: 20px;
     padding-left: 90px;
 }
-.short-descr span {
+.short-descr .prod-characteristics {
     font-weight: bold;
     border-bottom: 1px solid black;
 }
@@ -73,17 +86,17 @@ html, body {
     max-height: 200px;
 }
 .basket {
-    max-width: 700px;
-    /*width: 80% !important;*/
     margin: 0 auto;
+}
+.basket-row td:last-child {
+    width: 110px;
 }
 .orders-history {
-    max-width: 700px;
     margin: 0 auto;
 }
-.navbar-brand img
-{
-    width: 100px;
+.navbar-brand img {
+    width: 200px;
+    box-shadow: 2px 0 2px 2px rgb(255,255,255), 2px 0 2px 2px rgb(255,255,255);
 }
 .basket-button {
     display: inline-block;
@@ -155,6 +168,9 @@ html, body {
 .mynavbar {
     background-color: #337ab7;
 }
+nav .mynavbar {
+    max-height: 1000px;
+}
 .mynavbar-btn {
     color: #fff !important;
     background-color: #337ab7 !important;
@@ -208,3 +224,41 @@ html, body {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.divider-categories {
+    background-color: darkgrey !important;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.input-group-addon {
+    padding-left: 5px !important;
+}
+.form-control {
+    padding-right: 5px !important;
+}
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+@media (max-width: 768px) {
+    .mynavbar-fixed-top {
+        top: 0;
+        border-width: 0 0 2px !important;
+    }
+    .divider-button {
+        height: 2px !important;
+    }
+    .mynavbar-btn {
+        text-align: center;
+    }
+    .mynavbar-btn_dropdown {
+        text-align: center;
+    }
+}
+
+

@@ -10,6 +10,9 @@ require 'header.php';
             <?php if ($error == 405):?>
                 <h2>Sorry, your shopping cart is empty!</h2>
             <?php endif; ?>
+            <?php if ($error == 4041):?>
+                <h2>Sorry, no results were found for your search.</h2>
+            <?php endif; ?>
             <?php if ($error == 401):?>
                 <h2>You are not authorized!</h2>
             <?php endif; ?>

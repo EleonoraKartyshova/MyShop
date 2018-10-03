@@ -14,6 +14,8 @@ use Shop\Logs\ShopLogger;
 
 class HistoryController extends FrontController
 {
+    public static $page_number = 4;
+
     public function action_index()
     {
         try {
@@ -22,8 +24,8 @@ class HistoryController extends FrontController
             }
             $obj = new HistoryModel();
             $user_id = Authentication::get_user_id();
-            $data = $obj->orders_history($user_id);
-            $this->view->generate('ordersHistoryView.php', $data);
+            $orders = $obj->orders_history($user_id);
+            $this->view->generate('ordersHistoryView.php', ['orders' => $orders, "page_number" => self::$page_number]);
         } catch (AuthException $e) {
             $controller = new ErrorController();
             $data = $e->getCode();

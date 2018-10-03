@@ -40,6 +40,32 @@ class ActiveRecord
         $result = $result->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
+    public function get_all_records_from_range($start, $range)
+    {
+        $sql = 'SELECT * FROM ' . $this->table_name . ' LIMIT ' . $start .', '. $range;
+        $result = $this->dbc->query($sql);
+        $result = $result->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
+    public function get_records_from_range_by_value($start, $range, $field, $value)
+    {
+        $sql = 'SELECT * FROM ' . $this->table_name . ' WHERE ' . $field." = '". $value ."'" . ' LIMIT ' . $start .', '. $range;
+        $result = $this->dbc->query($sql);
+        $result = $result->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
+    public function get_records_count($field = null, $value = null)
+    {
+        if ($field == null && $value == null) {
+            $result = $this->dbc->query('SELECT COUNT(*) as count FROM '. $this->table_name);
+            $result = $result->fetchColumn();
+        } else {
+            $sql =  'SELECT COUNT(*) as count FROM '. $this->table_name. ' WHERE ' . $field." = '". $value ."'";
+            $result = $this->dbc->query($sql);
+            $result = $result->fetchColumn();
+        }
+        return $result;
+    }
     public function get_fields()
     {
         $fields = get_class_vars(get_class($this));
@@ -88,6 +114,12 @@ class ActiveRecord
     {
         $result = $this->dbc->query($query);
         $result = $result->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
+    public function my_query_col($sql)
+    {
+        $result = $this->dbc->query($sql);
+        $result = $result->fetchColumn();
         return $result;
     }
 }

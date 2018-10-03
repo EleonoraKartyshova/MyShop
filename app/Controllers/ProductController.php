@@ -16,16 +16,16 @@ use MyShop\Service\ProtectionFromResubmitForm;
 
 class ProductController extends FrontController
 {
-    public function get_product($id)
+    public function get_product($params)
     {
         if (Authentication::is_auth()) {
             ProtectionFromResubmitForm::set_protective_code();
         }
         $obj = new ProductModel();
-        $data = $obj->get_product($id);
+        $data = $obj->get_product($params['id']);
         $this->view->generate('productView.php', $data);
     }
-    public function add_review($id)
+    public function add_review($params)
     {
         try {
             if (!Authentication::is_auth()) {
@@ -36,9 +36,9 @@ class ProductController extends FrontController
             $text_review = $_POST["text_review"];
             $post_review_code = $_POST["review"];
             $session_review_code = ProtectionFromResubmitForm::get_protective_code();
-            $obj->add_review($id, $user_id, $text_review, $post_review_code, $session_review_code);
+            $obj->add_review($params['id'], $user_id, $text_review, $post_review_code, $session_review_code);
             ProtectionFromResubmitForm::set_protective_code();
-            $data = $obj->get_product($id);
+            $data = $obj->get_product($params['id']);
             $this->view->generate('productView.php', $data);
         } catch (AuthException $e) {
             $controller = new ErrorController();

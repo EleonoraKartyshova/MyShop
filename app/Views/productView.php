@@ -5,10 +5,10 @@ require 'header.php';
         <div class="row product-card_wrapper">
             <div><span class="prod-name"><?php echo $product->title; ?></span></div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <img class="card-img img-responsive" src="<?php echo $product->picture; ?>" alt="">
+                <img class="card-img img-responsive" src="<?php echo $product->picture; ?>" alt="dress">
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 short-descr">
-                <div><span>Characteristics</span></div>
+                <div><span class="prod-characteristics">Characteristics</span></div>
                 <ul>
                     <li>Category: <?php echo $product->category; ?></li>
                     <li>Style: <?php echo $product->style; ?></li>
@@ -19,7 +19,7 @@ require 'header.php';
                     <li>Manufacturer country: <?php echo $product->manufacturer_country; ?></li>
                 </ul>
                 <div><h3>Price: <br><?php echo $product->price; ?></h3></div>
-                <a href="/basket/add_to_basket/id/<?php  echo $product->id; ?>" class="btn btn-primary col-md-5">Add to basket</a>
+                <a href="/basket/add_to_basket/id/<?php  echo $product->id; ?>" class="btn btn-primary col-md-6" title="Add product to basket">Add to basket <span class="glyphicon glyphicon-shopping-cart"></a>
             </div>
         </div>
         <div class="row">
@@ -47,7 +47,7 @@ require 'header.php';
                         <div>
                             <form action="/product/add_review/id/<?php  echo $product->id; ?>" method="post">
                                 <textarea class="form-control" name="text_review" rows="3" placeholder="Please, log in and leave your review here" required></textarea><br>
-                                <button type="submit" class="btn btn-primary">Add review</button>
+                                <button type="submit" class="btn btn-primary" title="Add review">Add review <span class="glyphicon glyphicon-pencil"></button>
                                 <?php if (isset($_SESSION["review"])):?>
                                 <input type="hidden" name="review" value="<?php echo $_SESSION["review"]; ?>" />
                                 <?php endif; ?>

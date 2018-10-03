@@ -16,7 +16,7 @@ class HistoryModel extends Model
     public function orders_history($user_id)
     {
         $obj = new Orders();
-        $data['orders'] = $obj->orders_history($user_id);
+        $data = $obj->orders_history($user_id);
         return $data;
     }
 }
