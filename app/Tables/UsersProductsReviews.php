@@ -8,6 +8,7 @@
 namespace MyShop\Tables;
 
 use Shop\ActiveRecord;
+use Shop\QueryBuilder;
 
 class UsersProductsReviews extends ActiveRecord
 {
@@ -22,11 +23,11 @@ class UsersProductsReviews extends ActiveRecord
 
     public function get_reviews($id)
     {
-        $sql = 'SELECT users_products_reviews.text_review, users_products_reviews.created_at, users.email 
-                FROM users_products_reviews 
-                INNER JOIN users 
-                ON users.id = users_products_reviews.user_id 
-                WHERE users_products_reviews.product_id = '. $id . ' ORDER BY users_products_reviews.created_at DESC';
+        $sql = QueryBuilder::select($this->table_name, ['users_products_reviews.text_review', 'users_products_reviews.created_at', 'users.email']) .
+            QueryBuilder::inner_join('users') .
+            QueryBuilder::on('users.id', 'users_products_reviews.user_id') .
+            QueryBuilder::where('users_products_reviews.product_id', $id) .
+            QueryBuilder::order_by($this->table_name, 'created_at', 'DESC');
         return $this->my_query($sql);
     }
     public function add_review($pr_id, $us_id, $text)

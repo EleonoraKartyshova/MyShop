@@ -10,6 +10,7 @@ namespace MyShop\Controllers;
 use Shop\Core\Controller;
 use MyShop\Models\ProductsModel;
 use MyShop\Controllers\FrontController;
+use Shop\Validator;
 
 class ProductsController extends FrontController
 {
@@ -20,11 +21,8 @@ class ProductsController extends FrontController
         $page  = $params["page"];
         $products_count_per_page  = $params["num"];
         $sort  = $params["sort"];
-        if (isset($_GET['search'])) {
+        if (isset($_GET['search']) && Validator::search($_GET['search'])) {
             $search_query = $_GET['search'];
-            $search = $params['search'];
-        } elseif (isset($params['search'])) {
-            $search_query = $params['search'];
             $search = $params['search'];
         } else {
             $search_query = null;

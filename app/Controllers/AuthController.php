@@ -10,6 +10,7 @@ namespace MyShop\Controllers;
 use MyShop\Service\Authentication;
 use MyShop\Models\AuthModel;
 use Shop\Exceptions\AuthException;
+use Shop\Validator;
 
 class AuthController extends FrontController
 {
@@ -19,11 +20,13 @@ class AuthController extends FrontController
     }
     public function auth()
     {
-        $new_login = $_POST['login'];
-        $new_password = $_POST['password'];
-        $obj = new AuthModel();
-        $data_auth = $obj->auth($new_login, $new_password);
-        Authentication::auth($data_auth);
-        $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
+        if (Validator::email($_POST['login']) && Validator::password($_POST['password'])) {
+            $new_login = $_POST['login'];
+            $new_password = $_POST['password'];
+            $obj = new AuthModel();
+            $data_auth = $obj->auth($new_login, $new_password);
+            Authentication::auth($data_auth);
+            $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
+        }
     }
 }

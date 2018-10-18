@@ -32,19 +32,13 @@ class Products extends ActiveRecord
 
     public function update_quantity_of_goods_sold($product_id)
     {
-        $sql = 'UPDATE ' . $this->table_name . ' SET quantity_sold=quantity_sold + 1 WHERE id='.$product_id;
+        $update_field = 'quantity_sold';
+        $update_value = 'quantity_sold + 1';
+        $where_field = 'id';
+        $sql = QueryBuilder::update($this->table_name, $update_field, $update_value) .
+            QueryBuilder::where($where_field, $product_id);
         $this->my_query($sql);
     }
-
-//    public function search_products($search_query)
-//    {
-//        $sql = 'SELECT * FROM '. $this->table_name .
-//            " WHERE MATCH (category, title, style, features, fabric_material, length, color, description) AGAINST ('". $search_query ."')";
-//        $sql = 'SELECT * FROM '. $this->table_name .
-//            " WHERE MATCH (title) AGAINST ('". $search_query ."')";
-//        return $this->my_query($sql);
-//    }
-
     public function products(
         $where_field,
         $where_value,
@@ -82,4 +76,13 @@ class Products extends ActiveRecord
             QueryBuilder::like($like_field, $like_value, $sql_start_with_where);
         return $this->my_query_col($sql);
     }
+
+//    public function search_products($search_query)
+//    {
+//        $sql = 'SELECT * FROM '. $this->table_name .
+//            " WHERE MATCH (category, title, style, features, fabric_material, length, color, description) AGAINST ('". $search_query ."')";
+//        $sql = 'SELECT * FROM '. $this->table_name .
+//            " WHERE MATCH (title) AGAINST ('". $search_query ."')";
+//        return $this->my_query($sql);
+//    }
 }

@@ -4,10 +4,10 @@ require 'header.php';
     <div class="container main-content">
         <div class="row product-card_wrapper">
             <div><span class="prod-name"><?php echo $product->title; ?></span></div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
                 <img class="card-img img-responsive" src="<?php echo $product->picture; ?>" alt="dress">
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 short-descr">
+            <div class="col-xs-12 col-sm-4 col-md-6 col-lg-6 short-descr">
                 <div><span class="prod-characteristics">Characteristics</span></div>
                 <ul>
                     <li>Category: <?php echo $product->category; ?></li>
@@ -18,7 +18,7 @@ require 'header.php';
                     <li>Color: <?php echo $product->color; ?></li>
                     <li>Manufacturer country: <?php echo $product->manufacturer_country; ?></li>
                 </ul>
-                <div><h3>Price: <br><?php echo $product->price; ?></h3></div>
+                <div><h3 class="prod-characteristics_price">Price: <br><?php echo $product->price; ?></h3></div>
                 <a href="/basket/add_to_basket/id/<?php  echo $product->id; ?>" class="btn btn-primary col-md-6" title="Add product to basket">Add to basket <span class="glyphicon glyphicon-shopping-cart"></a>
             </div>
         </div>
@@ -37,6 +37,7 @@ require 'header.php';
                         foreach ($reviews as $key => $review):
                             ?>
                         <div>
+                            <br>
                             <h4 class="review-author"><?php echo $review->email; ?></h4>
                             <p><?php echo $review->text_review; ?></p>
                             <p><?php echo $review->created_at; ?></p><br><hr><br>

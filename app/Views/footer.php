@@ -1,11 +1,11 @@
-<div class="push"></div>
+    <div class="push"></div>
 </div>
 <footer class="footer">
         <div class="row">
             <div class="col-md-12">
-                Copyright
+                <span class="glyphicon glyphicon-copyright-mark"></span> Copyright
             </div>
         </div>
-    </footer>
+</footer>
 </body>
 </html>

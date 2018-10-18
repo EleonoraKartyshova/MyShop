@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>MyShop</title>
     <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/bootstrap/css/bootstrap.min.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/styles/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/styles/style.css">
     <script>
         $('#myTabs a').click(function (e) {
@@ -34,11 +34,11 @@
                             <form action="/auth/auth" method="post">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Enter yor email:</label>
-                                    <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="example@com" required>
+                                    <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="my@example.com" pattern="[a-zA-Z0-9]{2,}+@[a-zA-Z0-9]{2,}+\.[a-zA-Z]{2,5}$" title="Invalid email address" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Enter your password:</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -61,15 +61,15 @@
                             <form action="/registration/reg" method="post">
                                 <div class="form-group">
                                     <label for="exampleInputEmail2">Enter yor email:</label>
-                                    <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="example@com" required>
+                                    <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="my@example.com" pattern="[a-zA-Z0-9]{2,}+@[a-zA-Z0-9]{2,}+\.[a-zA-Z]{2,5}$" title="Invalid email address" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword2">Enter your password:</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword3">Enter your phone number:</label>
-                                    <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="Phone number" required>
+                                    <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="12345" pattern="[0-9]{5,13}$" title="Invalid phone number" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -84,17 +84,17 @@
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle my-navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand mynavbar-brand" href="/main" title="Sherri Hill"><img class="img-responsive" src="/images/sherri-hill_logo.png" alt="SHERRY HILL"></a>
+                        <a class="navbar-brand mynavbar-brand" href="/main" title="About Sherri Hill brand"><img class="img-responsive" src="/images/sherri-hill_logo.png" alt="SHERRY HILL"></a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav my-navbar-nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle mynavbar-btn" data-toggle="dropdown">
                                     <span class="middle <?php if (isset($page_number) && $page_number == 2) {echo ' mynavbar-active';} ?>">Catalog</span>

@@ -2,16 +2,16 @@
 require 'header.php';
 ?>
 <div class="container">
-    <div class="row wrapper-products_filters">
-        <h4 class="col-xs-3 col-sm-3 col-md-4 col-lg-5 wrapper-products_filters-title">Category: <?php echo $category; ?> dresses</h4>
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 text-right wrapper-products_filters-item">
+    <div class="row wrapper wrapper-products_filters">
+        <h4 class="col-xs-12 col-sm-6 col-md-4 col-lg-5 wrapper-products_filters-title">Category: <?php echo $category; ?> dresses</h4>
+        <div class="col-xs-8 col-sm-6 col-md-3 col-lg-3  wrapper-products_filters-item">
             <form action="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/" method="get">
                 <div id="imaginary_container">
                     <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control"  placeholder="Search" name="search">
-                        <span class="input-group-addon">
+                        <input type="text" class="form-control wrapper-products_filters-item_search"  placeholder="Search" name="search" pattern="[a-zA-Z0-9\ ]{3,}$" title="Invalid input">
+                        <span class="input-group-addon  ">
                         <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
+                            <span class="glyphicon glyphicon-search "></span>
                         </button>
                     </span>
                     </div>
@@ -20,7 +20,7 @@ require 'header.php';
         </div>
         <?php
         if (!$search):?>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 text-right wrapper-products_filters-item">Sort by <span class="glyphicon glyphicon-sort"></span>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 wrapper-products_filters-item wrapper-products_filters-item_sort">Sort by <span class="glyphicon glyphicon-sort"></span>
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['sort']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -32,7 +32,7 @@ require 'header.php';
                     </ul>
                 </div>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 wrapper-products_filters-item">Show <span class="glyphicon glyphicon-th"></span>
+            <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 wrapper-products_filters-item">Show <span class="glyphicon glyphicon-th"></span>
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['num']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -47,7 +47,7 @@ require 'header.php';
         <?php endif; ?>
         <?php
         if ($search):?>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 text-right wrapper-products_filters-item">Sort by <span class="glyphicon glyphicon-sort"></span>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 wrapper-products_filters-item wrapper-products_filters-item_sort">Sort by <span class="glyphicon glyphicon-sort"></span>
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['sort']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -59,7 +59,7 @@ require 'header.php';
                     </ul>
                 </div>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 wrapper-products_filters-item">Show <span class="glyphicon glyphicon-th"></span>
+            <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 wrapper-products_filters-item">Show <span class="glyphicon glyphicon-th"></span>
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['num']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -76,7 +76,7 @@ require 'header.php';
     <?php
     if ($search):?>
         <div class="row wrapper-products_filters">
-            <h4 class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wrapper-products_search-title">Showing results for your search query: <?php echo $search_query; ?></h4>
+            <h4 class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wrapper-products_search-title">Showing results for your search: <?php echo $search_query; ?></h4>
         </div>
     <?php endif; ?>
     <div class="row wrapper">

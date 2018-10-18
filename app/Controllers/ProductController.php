@@ -13,6 +13,7 @@ use Shop\Exceptions\AuthException;
 use Shop\Logs\ShopLogger;
 use MyShop\Service\Authentication;
 use MyShop\Service\ProtectionFromResubmitForm;
+use Shop\Validator;
 
 class ProductController extends FrontController
 {
@@ -31,15 +32,17 @@ class ProductController extends FrontController
             if (!Authentication::is_auth()) {
                 throw new AuthException('User is not authorized', '4013');
             }
-            $obj = new ProductModel();
-            $user_id = Authentication::get_user_id();
-            $text_review = $_POST["text_review"];
-            $post_review_code = $_POST["review"];
-            $session_review_code = ProtectionFromResubmitForm::get_protective_code();
-            $obj->add_review($params['id'], $user_id, $text_review, $post_review_code, $session_review_code);
-            ProtectionFromResubmitForm::set_protective_code();
-            $data = $obj->get_product($params['id']);
-            $this->view->generate('productView.php', $data);
+            if (Validator::text_review($_POST["text_review"])) {
+                $obj = new ProductModel();
+                $user_id = Authentication::get_user_id();
+                $text_review = $_POST["text_review"];
+                $post_review_code = $_POST["review"];
+                $session_review_code = ProtectionFromResubmitForm::get_protective_code();
+                $obj->add_review($params['id'], $user_id, $text_review, $post_review_code, $session_review_code);
+                ProtectionFromResubmitForm::set_protective_code();
+                $data = $obj->get_product($params['id']);
+                $this->view->generate('productView.php', $data);
+            }
         } catch (AuthException $e) {
             $controller = new ErrorController();
             $data = $e->getCode();
