@@ -77,19 +77,24 @@ class QueryBuilder
         }
         return $sql;
     }
-    public static function where($field = null, $value = null, $sql_logical_operator = 'AND')
+    public static function where($field = null, $value = null, $sql_start_with_where = true, $sql_logical_operator = 'AND', $sql_operand = '=')
     {
         $sql = '';
         if ($value) {
+            if ($sql_start_with_where) {
+                $sql = " WHERE (";
+            } else {
+                $sql = " AND (";
+            }
             if (is_array($field)) {
-                $sql = " WHERE ";
                 $count = count($field);
                 for ($i = 0; $i < $count; $i++) {
-                    $sql = $sql . $field[$i] . " = '". $value[$i] ."'" . $sql_logical_operator . " ";
+                    $sql = $sql . $field[$i] ." ". $sql_operand . " '". $value[$i] ."' " . $sql_logical_operator . " ";
                 }
                 $sql = substr($sql, 0, -4);
+                $sql = $sql . ")";
             } else {
-                $sql = ' WHERE ' . $field." = '". $value ."'";
+                $sql = $sql . $field ." ". $sql_operand . " '". $value ."')";
             }
         }
         return $sql;
@@ -99,9 +104,9 @@ class QueryBuilder
         $sql = '';
         if ($value) {
             if ($sql_start_with_where) {
-                $sql_start = " WHERE ";
+                $sql_start = " WHERE (";
             } else {
-                $sql_start = " AND ";
+                $sql_start = " AND (";
             }
             $sql_end = "";
             $sql_field = "(UPPER (" . $field . ") LIKE UPPER ('%";
@@ -110,7 +115,7 @@ class QueryBuilder
                 $sql_end  = $sql_end . $sql_field . $key_word . "%')) " . $sql_logical_operator . " ";
             }
             $sql_end = substr($sql_end, 0, -4);
-            $sql = $sql_start . $sql_end;
+            $sql = $sql_start . $sql_end . ")";
         }
         return $sql;
     }

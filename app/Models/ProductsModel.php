@@ -12,8 +12,10 @@ use MyShop\Tables\Products;
 
 class ProductsModel extends Model
 {
-    public function products($category, $page, $products_count_per_page, $sort, $search_query)
+    public function products($category, $page, $products_count_per_page, $sort, $search_query, $filter)
     {
+        $where_field = [];
+        $where_value = [];
         $start = ($page - 1) * $products_count_per_page;
         $category_field = 'category';
         $search_field = 'title';
@@ -21,6 +23,69 @@ class ProductsModel extends Model
         if ($category == 'all') {
             $category = null;
         }
+        $where_length_field = null;
+        $where_length_value = null;
+        $where_fabric_material_field = null;
+        $where_fabric_material_value = null;
+        $where_color_field = null;
+        $where_color_value = null;
+        $where_price_from_field = null;
+        $where_price_from_value = null;
+        $where_price_to_field = null;
+        $where_price_to_value = null;
+        if (!empty($filter)) {
+            if (isset($filter['length'])) {
+                $where_length_field = [];
+                $where_length_value = [];
+                foreach ($filter['length'] as $value) {
+                    $where_length_field[] = 'length';
+                    $where_length_value[] = $value;
+                }
+            } else {
+                $where_length_field = null;
+                $where_length_value = null;
+            }
+            if (isset($filter['fabric_material'])) {
+                $where_fabric_material_field = "";
+                $where_fabric_material_value = [];
+                foreach ($filter['fabric_material'] as $value) {
+                    $where_fabric_material_field = 'fabric_material';
+                    $where_fabric_material_value[] = $value;
+                }
+            } else {
+                $where_fabric_material_field = null;
+                $where_fabric_material_value = null;
+            }
+            if (isset($filter['color'])) {
+                $where_color_field = "";
+                $where_color_value = [];
+                foreach ($filter['color'] as $value) {
+                    $where_color_field = 'color';
+                    $where_color_value[] = $value;
+                }
+            } else {
+                $where_color_field = null;
+                $where_color_value = null;
+            }
+            if (!empty($filter['price_from'])) {
+                $where_price_from_field = 'price';
+                $where_price_from_value = $filter['price_from'];
+            } else {
+                $where_price_from_field = null;
+                $where_price_from_value = null;
+            }
+            if (!empty($filter['price_to'])) {
+                $where_price_to_field = 'price';
+                $where_price_to_value = $filter['price_to'];
+            } else {
+                $where_price_to_field = null;
+                $where_price_to_value = null;
+            }
+            $filter_flag = true;
+        } else {
+            $filter_flag = false;
+        }
+
         switch ($sort) {
             case 'new':
                 $sort_by_field = 'created_at';
@@ -46,8 +111,42 @@ class ProductsModel extends Model
             $search_query = trim($search_query, ' ');
             $search_query = explode(' ', $search_query);
         }
-        $data['products'] = $obj->products($category_field, $category, $search_field, $search_query, $sort_by_field, $sorting_method, $start, $products_count_per_page);
-        $products_count = $obj->products_count($category_field, $category, $search_field, $search_query);
+        $data['products'] = $obj->products(
+            $category_field,
+            $category,
+            $search_field,
+            $search_query,
+            $sort_by_field,
+            $sorting_method,
+            $start,
+            $products_count_per_page,
+            $filter_flag,
+            $where_length_field,
+            $where_length_value,
+            $where_fabric_material_field,
+            $where_fabric_material_value,
+            $where_color_field,
+            $where_color_value,
+            $where_price_from_field,
+            $where_price_from_value,
+            $where_price_to_field,
+            $where_price_to_value);
+        $products_count = $obj->products_count(
+            $category_field,
+            $category,
+            $search_field,
+            $search_query,
+            $filter_flag,
+            $where_length_field,
+            $where_length_value,
+            $where_fabric_material_field,
+            $where_fabric_material_value,
+            $where_color_field,
+            $where_color_value,
+            $where_price_from_field,
+            $where_price_from_value,
+            $where_price_to_field,
+            $where_price_to_value);
         $last_page = ceil($products_count/$products_count_per_page);
         $current_page = $page;
         if ($current_page > 1) {

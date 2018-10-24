@@ -8,6 +8,7 @@
 
 namespace MyShop\Controllers;
 
+use MyShop\Service\ProductsFilter;
 use Shop\Core\Controller;
 use MyShop\Service\Authentication;
 use Shop\Core\View;
@@ -17,6 +18,9 @@ class FrontController extends Controller
     public  function __construct()
     {
         parent::__construct();
+        if (isset($this->page_number) && $this->page_number <> 2) {
+            ProductsFilter::clear_filter();
+        }
         $this->view->data["data_auth"] = self::is_auth();
     }
     public static function is_auth()

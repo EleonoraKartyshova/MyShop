@@ -45,8 +45,8 @@ class ProductController extends FrontController
             }
         } catch (AuthException $e) {
             $controller = new ErrorController();
-            $data = $e->getCode();
-            $controller->action_index($data);
+            $error_number = $e->getCode();
+            $controller->action_index($error_number);
             ShopLogger::write_log($e->getMessage());
         }
     }

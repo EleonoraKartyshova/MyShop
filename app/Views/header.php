@@ -34,7 +34,7 @@
                             <form action="/auth/auth" method="post">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Enter yor email:</label>
-                                    <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="my@example.com" pattern="[a-zA-Z0-9]{2,}+@[a-zA-Z0-9]{2,}+\.[a-zA-Z]{2,5}$" title="Invalid email address" required>
+                                    <input type="email" name="login" class="form-control" id="exampleInputEmail1" placeholder="my@example.com" pattern="[a-zA-Z0-9]{2,}+@[a-zA-Z0-9]{2,}+\.[a-zA-Z]{2,5}$" title="my@example.com" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Enter your password:</label>
@@ -61,7 +61,7 @@
                             <form action="/registration/reg" method="post">
                                 <div class="form-group">
                                     <label for="exampleInputEmail2">Enter yor email:</label>
-                                    <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="my@example.com" pattern="[a-zA-Z0-9]{2,}+@[a-zA-Z0-9]{2,}+\.[a-zA-Z]{2,5}$" title="Invalid email address" required>
+                                    <input type="email" name="login" class="form-control" id="exampleInputEmail2" placeholder="my@example.com" pattern="[a-zA-Z0-9]{2,}+@[a-zA-Z0-9]{2,}+\.[a-zA-Z]{2,5}$" title="my@example.com" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword2">Enter your password:</label>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword3">Enter your phone number:</label>
-                                    <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="12345" pattern="[0-9]{5,13}$" title="Invalid phone number" required>
+                                    <input type="text" name="phone_number" class="form-control" id="exampleInputPassword3" placeholder="12345" pattern="[0-9]{5,13}$" title="Must contain from 5 to 13 digits" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-default mynavbar  navbar-fixed-top mynavbar-fixed-top">
+            <nav class="navbar navbar-default mynavbar navbar-fixed-top mynavbar-fixed-top">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">

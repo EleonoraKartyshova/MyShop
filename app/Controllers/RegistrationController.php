@@ -11,6 +11,7 @@ use MyShop\Service\Authentication;
 use Shop\Core\Controller;
 use MyShop\Models\RegistrationModel;
 use Shop\Validator;
+use MyShop\Controllers\ErrorController;
 
 class RegistrationController extends FrontController
 {
@@ -26,8 +27,14 @@ class RegistrationController extends FrontController
                 Authentication::auth($data_auth);
                 $this->view->generate('registrationView.php', ["data_auth" => $data_auth]);
             } else {
-                $this->view->generate('mainView.php');
+                $error_number = '4014';
+                $controller = new ErrorController();
+                $controller->action_index($error_number);
             }
+        } else {
+            $error_number = '4011';
+            $controller = new ErrorController();
+            $controller->action_index($error_number);
         }
     }
 }

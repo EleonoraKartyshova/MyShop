@@ -16,14 +16,20 @@ require 'header.php';
             <?php if ($error == 401):?>
                 <h2>You are not authorized!</h2>
             <?php endif; ?>
+            <?php if ($error == 4010):?>
+                <h2>Wrong login or password! Please, try to log in again.</h2>
+            <?php endif; ?>
             <?php if ($error == 4011):?>
-                <h2>You are not authorized! Please, log in or register before adding products to the shopping cart.</h2>
+                <h2>Registration failed! You entered the data in incorrect format. Please, try again.</h2>
             <?php endif; ?>
             <?php if ($error == 4012):?>
                 <h2>You are not authorized! Please, log in or register before place an order.</h2>
             <?php endif; ?>
             <?php if ($error == 4013):?>
                 <h2>You are not authorized! Please, log in or register before leaving review.</h2>
+            <?php endif; ?>
+            <?php if ($error == 4014):?>
+                <h2>Registration failed! You entered an email address that is already in use! Please, try again.</h2>
             <?php endif; ?>
         </div>
     </div>

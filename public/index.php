@@ -10,6 +10,8 @@ if ($debug) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 use Shop\Application;
+use Shop\Session\Session;
 
+Session::start();
 $obj = new Application();
 Application::run();

@@ -7,6 +7,7 @@
  */
 namespace MyShop\Controllers;
 
+use MyShop\Service\ProductsFilter;
 use Shop\Core\Controller;
 use MyShop\Models\ProductsModel;
 use MyShop\Controllers\FrontController;
@@ -14,10 +15,26 @@ use Shop\Validator;
 
 class ProductsController extends FrontController
 {
-    public static $page_number = 2;
+    public $page_number = 2;
 
     public function dresses($params)
     {
+        if (isset($_POST['clear_all_filters'])) {
+            ProductsFilter::clear_filter();
+        }
+        if ((isset($_POST['color']) || isset($_POST['length']) || isset($_POST['fabric_material']) || !empty($_POST['price_from']) || !empty($_POST['price_to'])) && (!isset($_POST['clear_filter'])) && Validator::price($_POST['price_from']) && Validator::price($_POST['price_to'])) {
+            ProductsFilter::clear_filter();
+            ProductsFilter::set_filter($_POST);
+        }
+        if (isset($_POST['set_filter']) && (empty($_POST['color']) && empty($_POST['length']) && empty($_POST['fabric_material']) && empty($_POST['price_from']) && empty($_POST['price_to']))) {
+            ProductsFilter::clear_filter();
+        }
+        if (!empty(ProductsFilter::get_filter()) && !isset($_POST['clear_filter'])) {
+            $filter = ProductsFilter::get_filter();
+        } else {
+            ProductsFilter::clear_filter();
+            $filter = ProductsFilter::get_filter();
+        }
         $page  = $params["page"];
         $products_count_per_page  = $params["num"];
         $sort  = $params["sort"];
@@ -29,12 +46,13 @@ class ProductsController extends FrontController
             $search = null;
         }
         $obj = new ProductsModel();
-        $data = $obj->products($params['category'], $page, $products_count_per_page, $sort, $search_query);
+        $data = $obj->products($params['category'], $page, $products_count_per_page, $sort, $search_query, $filter);
         if (!$data['products']) {
-            $data['error'] = '4041';
-            $this->view->generate('errorView.php', ['error' => $data['error']]);
+            $error_number = '4041';
+            $controller = new ErrorController();
+            $controller->action_index($error_number);
         } else {
-            $this->view->generate('productsView.php', ["data" => $data, "category" => $params['category'], "search_query" => $search_query, "search" => $search, "page_number" => self::$page_number]);
+            $this->view->generate('productsView.php', ["data" => $data, "category" => $params['category'], "search_query" => $search_query, "search" => $search, "filter" => $filter, "page_number" => $this->page_number]);
         }
     }
 }

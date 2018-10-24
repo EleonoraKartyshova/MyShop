@@ -58,4 +58,12 @@ class Validator
             return false;
         }
     }
+    public static function price($data)
+    {
+        if (preg_match("/[0-9]{0,}/m", $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

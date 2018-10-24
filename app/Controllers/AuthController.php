@@ -11,6 +11,7 @@ use MyShop\Service\Authentication;
 use MyShop\Models\AuthModel;
 use Shop\Exceptions\AuthException;
 use Shop\Validator;
+use MyShop\Controllers\ErrorController;
 
 class AuthController extends FrontController
 {
@@ -25,8 +26,18 @@ class AuthController extends FrontController
             $new_password = $_POST['password'];
             $obj = new AuthModel();
             $data_auth = $obj->auth($new_login, $new_password);
-            Authentication::auth($data_auth);
-            $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
+            if ($data_auth['auth']) {
+                Authentication::auth($data_auth);
+                $this->view->generate('mainView.php', ["data_auth" => $data_auth]);
+            } else {
+                $error_number = '4010';
+                $controller = new ErrorController();
+                $controller->action_index($error_number);
+            }
+        } else {
+            $error_number = '4010';
+            $controller = new ErrorController();
+            $controller->action_index($error_number);
         }
     }
 }

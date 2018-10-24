@@ -8,7 +8,6 @@ class Authentication
     public static function auth($data_auth)
     {
         if ($data_auth['auth']) {
-            Session::start();
             Session::set_data('login', $data_auth['login']);
             Session::set_data('password', $data_auth['password']);
             Session::set_data('user_id', $data_auth['user_id']);
@@ -19,8 +18,7 @@ class Authentication
     }
     public static function is_auth()
     {
-        if(Session::cookieExists()) {
-            Session::start();
+        if(Session::get_data('login')) {
             return true;
         } else {
             return false;

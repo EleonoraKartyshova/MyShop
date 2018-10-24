@@ -13,8 +13,10 @@ use Shop\Core\View;
 
 class MainController extends FrontController
 {
+    public $page_number = 1;
+
     public function action_index()
     {
-        $this->view->generate('mainView.php');
+        $this->view->generate('mainView.php', ["page_number" => $this->page_number]);
     }
 }

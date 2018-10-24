@@ -37,6 +37,12 @@ html, body {
     padding: 0 5px;
     margin: 10px 0 0 0 !important;
 }
+.wrapper-products_filter-title {
+    font-weight: bold !important;
+}
+.wrapper-products_filter-price label {
+    font-weight: normal !important;
+}
 .wrapper-products_search-title {
     font-style: italic;
 }
@@ -202,6 +208,18 @@ nav .mynavbar {
     background:transparent;
 }
 .wrapper-products_filters-item_sort {
+    margin-bottom: 15px;
+}
+.wrapper-products_filters-item_show {
+    margin-bottom: 15px;
+}
+.wrapper-products_filters-item_search-title {
+    margin-bottom: 15px;
+}
+.wrapper-products_filters-item_clear-all {
+    margin-bottom: 15px;
+}
+.wrapper-products_filter {
     margin-bottom: 15px;
 }
 @media screen and (min-width: 1200px) {

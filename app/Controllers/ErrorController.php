@@ -12,8 +12,10 @@ use Shop\Core\Controller;
 
 class ErrorController extends FrontController
 {
-    public function action_index($data)
+    public $page_number = 5;
+
+    public function action_index($error_number)
     {
-        $this->view->generate('errorView.php', ['error' => $data]);
+        $this->view->generate('errorView.php', ['error' => $error_number, "page_number" => $this->page_number]);
     }
 }
