@@ -49,8 +49,8 @@ require 'header.php';
                             <form action="/product/add_review/id/<?php  echo $product->id; ?>" method="post">
                                 <textarea class="form-control" name="text_review" rows="3" placeholder="Please, log in and leave your review here" required></textarea><br>
                                 <button type="submit" class="btn btn-primary" title="Add review">Add review <span class="glyphicon glyphicon-pencil"></button>
-                                <?php if (isset($_SESSION["review"])):?>
-                                <input type="hidden" name="review" value="<?php echo $_SESSION["review"]; ?>" />
+                                <?php if (isset($_SESSION["code"])):?>
+                                <input type="hidden" name="code" value="<?php echo $_SESSION["code"]; ?>" />
                                 <?php endif; ?>
                             </form><br><hr>
                         </div>

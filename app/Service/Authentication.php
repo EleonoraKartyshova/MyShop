@@ -11,6 +11,7 @@ class Authentication
             Session::set_data('login', $data_auth['login']);
             Session::set_data('password', $data_auth['password']);
             Session::set_data('user_id', $data_auth['user_id']);
+            Session::set_data('role', $data_auth['role']);
             return true;
         } else {
             return false;
@@ -31,6 +32,10 @@ class Authentication
     public static function get_user_id()
     {
         return Session::get_data('user_id');
+    }
+    public static function get_role()
+    {
+        return Session::get_data('role');
     }
     public static function logout()
     {

@@ -29,9 +29,11 @@ class FrontController extends Controller
         if (Authentication::is_auth()) {
             $data['auth'] = true;
             $data['login'] = Authentication::get_login();
+            $data['role'] = Authentication::get_role();
         } else {
             $data['auth'] = false;
             $data['login'] = false;
+            $data['role'] = false;
         }
         return $data;
     }

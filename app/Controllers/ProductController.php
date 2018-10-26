@@ -36,7 +36,7 @@ class ProductController extends FrontController
                 $obj = new ProductModel();
                 $user_id = Authentication::get_user_id();
                 $text_review = $_POST["text_review"];
-                $post_review_code = $_POST["review"];
+                $post_review_code = $_POST["code"];
                 $session_review_code = ProtectionFromResubmitForm::get_protective_code();
                 $obj->add_review($params['id'], $user_id, $text_review, $post_review_code, $session_review_code);
                 ProtectionFromResubmitForm::set_protective_code();

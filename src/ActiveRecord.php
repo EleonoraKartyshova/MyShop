@@ -10,6 +10,7 @@ namespace Shop;
 
 use \PDO;
 use Shop\Singleton;
+use Shop\QueryBuilder;
 
 class ActiveRecord
 {
@@ -109,6 +110,16 @@ class ActiveRecord
         $result = $this->dbc->query('SELECT `' . $column. '`` FROM ' . $this->table_name . ' WHERE id= ' . $id);
         $result = $result->fetchAll(PDO::FETCH_CLASS);
         return $result;
+    }
+    public function delete_record_by_id($id)
+    {
+        $sql = QueryBuilder::delete($this->table_name) . QueryBuilder::where('id', $id);
+        $this->dbc->query($sql);
+    }
+    public function update_record_by_id($id, $changes)
+    {
+        $sql = QueryBuilder::update($this->table_name, $changes) . QueryBuilder::where('id', $id);
+        $this->dbc->query($sql);
     }
     public function my_query ($query)
     {

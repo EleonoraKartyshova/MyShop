@@ -70,6 +70,27 @@ html, body {
     font-weight: bold;
     border-bottom: 2px solid black;
 }
+.prod-name_admin-panel {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.prod-id_admin-panel {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.container-product_remove {
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.container-product_edit {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
 .card-img {
     max-height: 550px;
     margin-top: 20px;

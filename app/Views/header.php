@@ -115,6 +115,11 @@
                                 if ($data_auth['auth'] && $data_auth['login']):?>
                                     <li><a class="mynavbar-btn" href="/history"><span class="middle <?php if (isset($page_number) && $page_number == 4) {echo ' mynavbar-active';} ?>">Orders history</span></a></li>
                                     <li class="divider divider-button"></li>
+                                    <?php
+                                    if ($data_auth['role'] == '1'):?>
+                                        <li><a class="mynavbar-btn" href="/admin/admin_panel"><span class="middle <?php if (isset($page_number) && $page_number == 6) {echo ' mynavbar-active';} ?>">Admin panel <span class="glyphicon glyphicon-wrench"></span></span></a></li>
+                                        <li class="divider divider-button"></li>
+                                    <?php endif; ?>
                                     <li><a class="mynavbar-btn" href="#"><?php echo $data_auth['login']; ?></a></li>
                                     <li class="divider divider-button"></li>
                                     <li><form action='/auth/logout' method='post'><button class="mynavbar-exit" type='submit'>Log out</button></form></li>

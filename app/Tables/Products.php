@@ -18,6 +18,7 @@ class Products extends ActiveRecord
     public $category;
     public $title;
     public $picture;
+    public $price;
     public $quantity_in_stock;
     public $style;
     public $features;
@@ -32,12 +33,25 @@ class Products extends ActiveRecord
 
     public function update_quantity_of_goods_sold($product_id)
     {
-        $update_field = 'quantity_sold';
-        $update_value = 'quantity_sold + 1';
-        $where_field = 'id';
-        $sql = QueryBuilder::update($this->table_name, $update_field, $update_value) .
-            QueryBuilder::where($where_field, $product_id);
+        $sql = 'UPDATE ' . $this->table_name . " SET quantity_sold = quantity_sold + 1 WHERE id = '" . $product_id . "'";
         $this->my_query($sql);
+    }
+    public function add_product($data)
+    {
+        $this->category = $data['category'];
+        $this->title = $data['title'];
+        $this->picture = $data['picture'];
+        $this->price = $data['price'];
+        $this->quantity_in_stock = $data['quantity_in_stock'];
+        $this->style = $data['style'];
+        $this->features = $data['features'];
+        $this->fabric_material = $data['fabric_material'];
+        $this->length = $data['length'];
+        $this->color = $data['color'];
+        $this->manufacturer_country = $data['manufacturer_country'];
+        $this->description = $data['description'];
+        $this->quantity_sold = 0;
+        $this->add_record();
     }
     public function products(
         $where_field,

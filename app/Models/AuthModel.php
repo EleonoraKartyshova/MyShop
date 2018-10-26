@@ -23,6 +23,7 @@ class AuthModel extends Model
                 $data_auth['login'] = $new_login;
                 $data_auth['password'] = $new_password;
                 $data_auth['user_id'] = $user->id;
+                $data_auth['role'] = $user->role;
                 return $data_auth;
             } else {
                 $data_auth['auth'] = false;

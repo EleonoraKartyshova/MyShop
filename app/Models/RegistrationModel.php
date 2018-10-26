@@ -30,6 +30,7 @@ class RegistrationModel extends Model
             $data_auth['login'] = $new_login;
             $data_auth['password'] = $new_password;
             $data_auth['user_id'] = $user_id;
+            $data_auth['role'] = $new_role;
         }
         return $data_auth;
     }

@@ -26,14 +26,18 @@ class QueryBuilder
         }
         return $sql;
     }
-    public static function update($table_name, $field, $value)
+    public static function update($table_name, $changes)
     {
-        $sql = 'UPDATE ' . $table_name . ' SET ' . $field." = ". $value ;
+        $sql = 'UPDATE ' . $table_name . ' SET ';
+        foreach ($changes as $field => $value) {
+            $sql = $sql . $field." = '". $value . "', ";
+        }
+        $sql = substr($sql, 0, -2);
         return $sql;
     }
     public static function delete($table_name)
     {
-        $sql = $sql = 'DELETE FROM ' . $table_name;
+        $sql = 'DELETE FROM ' . $table_name;
         return $sql;
     }
     public static function insert($table_name, $fields, $values)
