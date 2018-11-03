@@ -11,6 +11,7 @@ namespace MyShop\Controllers;
 use MyShop\Service\ProductsFilter;
 use Shop\Core\Controller;
 use MyShop\Service\Authentication;
+use MyShop\Models\FrontModel;
 use Shop\Core\View;
 
 class FrontController extends Controller
@@ -21,6 +22,9 @@ class FrontController extends Controller
         if (isset($this->page_number) && $this->page_number <> 2) {
             ProductsFilter::clear_filter();
         }
+        $obj = new FrontModel();
+        $country = $obj->get_real_ip_addr();
+        $this->view->data["country"] = $country;
         $this->view->data["data_auth"] = self::is_auth();
     }
     public static function is_auth()

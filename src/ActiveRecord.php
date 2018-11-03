@@ -25,8 +25,16 @@ class ActiveRecord
     public function get_record_by_id($id)
     {
         $result = $this->dbc->query('SELECT * FROM ' . $this->table_name . ' WHERE id= ' . $id);
-        $result = $result->fetchAll(PDO::FETCH_CLASS);
-        return $result[0];
+        if ($result) {
+            $result = $result->fetchAll(PDO::FETCH_CLASS);
+            if ($result) {
+                return $result[0];
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
     public function get_all_records()
     {

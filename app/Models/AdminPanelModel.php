@@ -19,6 +19,12 @@ class AdminPanelModel extends Model
         $products = $obj->get_all_records();
         return $products;
     }
+    public function get_products_count()
+    {
+        $obj = new Products();
+        $count = $obj->products_count($where_field = null, $where_value = null, $like_field = null, $like_value = null, $filter_flag = false);
+        return $count;
+    }
     public function get_product($id)
     {
         $obj = new Products();

@@ -16,13 +16,17 @@ class BasketModel extends Model
     {
         $obj = new Products();
         $product = $obj->get_record_by_id($id);
-        $basket_product = [
-            $product->id  => [
-                'picture' => $product->picture,
-                'title'   => $product->title,
-                'price'   => $product->price
-            ]
-        ];
-        return $basket_product;
+        if ($product) {
+            $basket_product = [
+                $product->id  => [
+                    'picture' => $product->picture,
+                    'title'   => $product->title,
+                    'price'   => $product->price
+                ]
+            ];
+            return $basket_product;
+        } else {
+            return false;
+        }
     }
 }

@@ -30,6 +30,9 @@ require 'header.php';
             </div>
         <?php endif; ?>
         <div class="row wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2><?php echo $count; ?> products are now stored in the database</h2>
+        </div>
+        <div class="row wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <a href="/admin/add" class="btn btn-primary" title="Add new product">Add new product <span class="glyphicon glyphicon-ok"></span></a>
         </div>
         <div class="row wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">

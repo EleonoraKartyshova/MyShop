@@ -38,7 +38,9 @@ class Basket
     public static function delete_from_basket($id)
     {
         Session::start();
-        Session::delete('basket', $id);
+        if (Session::contains('basket', $id)) {
+            Session::delete('basket', $id);
+        }
         return Session::get_data('basket');
     }
     public static function order_price($data)

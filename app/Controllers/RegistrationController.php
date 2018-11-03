@@ -37,4 +37,8 @@ class RegistrationController extends FrontController
             $controller->action_index($error_number);
         }
     }
+    public function action_index()
+    {
+        $this->view->generate('mainView.php');
+    }
 }

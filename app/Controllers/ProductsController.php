@@ -17,7 +17,41 @@ class ProductsController extends FrontController
 {
     public $page_number = 2;
 
-    public function dresses($params)
+    public function action_index($params = "")
+    {
+        ProductsFilter::clear_filter();
+        $filter = ProductsFilter::get_filter();
+        if (isset($params["page"])) {
+            $page  = $params["page"];
+        } else {
+            $page = 1;
+        }
+        if (isset($params["num"])) {
+            $products_count_per_page  = $params["num"];
+        } else {
+            $products_count_per_page  = 6;
+        }
+        if (isset($params["sort"])) {
+            $sort  = $params["sort"];
+        } else {
+            $sort  = "recommend";
+        }
+        if (!isset($params['category'])) {
+            $params['category'] = "all";
+        }
+        $search_query = null;
+        $search = null;
+        $obj = new ProductsModel();
+        $data = $obj->products($params['category'], $page, $products_count_per_page, $sort, $search_query, $filter);
+        if (!$data['products']) {
+            $error_number = '4041';
+            $controller = new ErrorController();
+            $controller->action_index($error_number);
+        } else {
+            $this->view->generate('productsView.php', ["data" => $data, "category" => $params['category'], "search_query" => $search_query, "search" => $search, "filter" => $filter, "page_number" => $this->page_number]);
+        }
+    }
+    public function dresses($params = "")
     {
         if (isset($_POST['clear_all_filters'])) {
             ProductsFilter::clear_filter();
@@ -35,9 +69,24 @@ class ProductsController extends FrontController
             ProductsFilter::clear_filter();
             $filter = ProductsFilter::get_filter();
         }
-        $page  = $params["page"];
-        $products_count_per_page  = $params["num"];
-        $sort  = $params["sort"];
+        if (isset($params["page"])) {
+            $page  = $params["page"];
+        } else {
+            $page = 1;
+        }
+        if (isset($params["num"])) {
+            $products_count_per_page  = $params["num"];
+        } else {
+            $products_count_per_page  = 6;
+        }
+        if (isset($params["sort"])) {
+            $sort  = $params["sort"];
+        } else {
+            $sort  = "recommend";
+        }
+        if (!isset($params['category'])) {
+            $params['category'] = "all";
+        }
         if (isset($_GET['search']) && Validator::search($_GET['search'])) {
             $search_query = $_GET['search'];
             $search = $params['search'];

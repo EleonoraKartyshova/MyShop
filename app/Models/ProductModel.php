@@ -17,9 +17,13 @@ class ProductModel extends Model
     {
         $product = new Products();
         $data['product'] = $product->get_record_by_id($id);
-        $us_prod_rev = new UsersProductsReviews();
-        $data['reviews'] = $us_prod_rev->get_reviews($id);
-        return $data;
+        if ($data['product']) {
+            $us_prod_rev = new UsersProductsReviews();
+            $data['reviews'] = $us_prod_rev->get_reviews($id);
+            return $data;
+        } else {
+            return false;
+        }
     }
     public function add_review($id, $user_id, $text_review, $post_review_code, $session_review_code)
     {

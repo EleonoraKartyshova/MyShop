@@ -17,14 +17,22 @@ use Shop\Validator;
 
 class ProductController extends FrontController
 {
-    public function get_product($params)
+    public function get_product($params = "")
     {
-        if (Authentication::is_auth()) {
-            ProtectionFromResubmitForm::set_protective_code();
+        if (isset($params['id'])) {
+            if (Authentication::is_auth()) {
+                ProtectionFromResubmitForm::set_protective_code();
+            }
+            $obj = new ProductModel();
+            $data = $obj->get_product($params['id']);
+            if ($data) {
+                $this->view->generate('productView.php', $data);
+            } else {
+                $this->action_index();
+            }
+        } else {
+            $this->action_index();
         }
-        $obj = new ProductModel();
-        $data = $obj->get_product($params['id']);
-        $this->view->generate('productView.php', $data);
     }
     public function add_review($params)
     {

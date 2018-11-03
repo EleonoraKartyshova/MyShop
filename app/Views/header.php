@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-default mynavbar navbar-fixed-top mynavbar-fixed-top">
+            <nav class="navbar navbar-default mynavbar  mynavbar-fixed-top">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
@@ -109,7 +109,7 @@
                                 </ul>
                             </li>
                             <li class="divider divider-button"></li>
-                            <li><a class="mynavbar-btn" href="/basket/basket"><span class="middle <?php if (isset($page_number) && $page_number == 3) {echo ' mynavbar-active';} ?>">Basket</span></a></li>
+                            <li><a class="mynavbar-btn" href="/basket"><span class="middle <?php if (isset($page_number) && $page_number == 3) {echo ' mynavbar-active';} ?>">Basket</span></a></li>
                             <li class="divider divider-button"></li>
                                 <?php
                                 if ($data_auth['auth'] && $data_auth['login']):?>
@@ -117,7 +117,7 @@
                                     <li class="divider divider-button"></li>
                                     <?php
                                     if ($data_auth['role'] == '1'):?>
-                                        <li><a class="mynavbar-btn" href="/admin/admin_panel"><span class="middle <?php if (isset($page_number) && $page_number == 6) {echo ' mynavbar-active';} ?>">Admin panel <span class="glyphicon glyphicon-wrench"></span></span></a></li>
+                                        <li><a class="mynavbar-btn" href="/admin"><span class="middle <?php if (isset($page_number) && $page_number == 6) {echo ' mynavbar-active';} ?>">Admin panel <span class="glyphicon glyphicon-wrench"></span></span></a></li>
                                         <li class="divider divider-button"></li>
                                     <?php endif; ?>
                                     <li><a class="mynavbar-btn" href="#"><?php echo $data_auth['login']; ?></a></li>

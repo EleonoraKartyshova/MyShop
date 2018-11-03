@@ -88,12 +88,20 @@ class Session
     {
         return $_SESSION;
     }
-    public static function contains($key)
+    public static function contains($key, $key2 = null)
     {
-        if (isset($_SESSION[$key])) {
-            return true;
+        if (isset($key2)) {
+            if (isset($_SESSION[$key][$key2])) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            if (isset($_SESSION[$key])) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
     public static function delete($key, $key2 = null)

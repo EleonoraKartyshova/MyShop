@@ -17,7 +17,7 @@ use Shop\Logs\ShopLogger;
 
 class OrderController extends FrontController
 {
-    public function place_an_order()
+    public function action_index()
     {
         try {
             if (!Authentication::is_auth()) {
