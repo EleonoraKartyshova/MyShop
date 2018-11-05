@@ -121,12 +121,16 @@ class ActiveRecord
     }
     public function delete_record_by_id($id)
     {
-        $sql = QueryBuilder::delete($this->table_name) . QueryBuilder::where('id', $id);
+        $obj = new QueryBuilder();
+        $obj->delete($this->table_name)->where('id', $id);
+        $sql = $obj->sql;
         $this->dbc->query($sql);
     }
     public function update_record_by_id($id, $changes)
     {
-        $sql = QueryBuilder::update($this->table_name, $changes) . QueryBuilder::where('id', $id);
+        $obj = new QueryBuilder();
+        $obj->update($this->table_name, $changes)->where('id', $id);
+        $sql = $obj->sql;
         $this->dbc->query($sql);
     }
     public function my_query ($query)

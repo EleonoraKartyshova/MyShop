@@ -48,7 +48,7 @@ class ProductsController extends FrontController
             $controller = new ErrorController();
             $controller->action_index($error_number);
         } else {
-            $this->view->generate('productsView.php', ["data" => $data, "category" => $params['category'], "search_query" => $search_query, "search" => $search, "filter" => $filter, "page_number" => $this->page_number]);
+            $this->view->generate('productsView.php', ["data" => $data, "search_query" => $search_query, "search" => $search, "filter" => $filter, "page_number" => $this->page_number]);
         }
     }
     public function dresses($params = "")
@@ -101,7 +101,7 @@ class ProductsController extends FrontController
             $controller = new ErrorController();
             $controller->action_index($error_number);
         } else {
-            $this->view->generate('productsView.php', ["data" => $data, "category" => $params['category'], "search_query" => $search_query, "search" => $search, "filter" => $filter, "page_number" => $this->page_number]);
+            $this->view->generate('productsView.php', ["data" => $data, "search_query" => $search_query, "search" => $search, "filter" => $filter, "page_number" => $this->page_number]);
         }
     }
 }

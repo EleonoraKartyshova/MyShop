@@ -11,7 +11,9 @@ namespace Shop;
 
 class QueryBuilder
 {
-    public static function select($table_name, $select_what = '*')
+    public $sql = '';
+
+    public function select($table_name, $select_what = '*')
     {
         if (is_array($select_what)) {
             $sql_start = 'SELECT ';
@@ -24,23 +26,26 @@ class QueryBuilder
         } else {
             $sql = 'SELECT ' . $select_what . ' FROM ' . $table_name;
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function update($table_name, $changes)
+    public function update($table_name, $changes)
     {
         $sql = 'UPDATE ' . $table_name . ' SET ';
         foreach ($changes as $field => $value) {
             $sql = $sql . $field." = '". $value . "', ";
         }
         $sql = substr($sql, 0, -2);
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function delete($table_name)
+    public function delete($table_name)
     {
         $sql = 'DELETE FROM ' . $table_name;
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function insert($table_name, $fields, $values)
+    public function insert($table_name, $fields, $values)
     {
         if (is_array($fields)) {
             $sql_fields = 'INSERT INTO '. $table_name . ' (';
@@ -57,14 +62,16 @@ class QueryBuilder
         } else {
             $sql = 'INSERT INTO '. $table_name . ' (' . $fields . ") VALUES ('" . $values . "')";
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function inner_join($table_name)
+    public function inner_join($table_name)
     {
         $sql = $sql = ' INNER JOIN ' . $table_name;
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function on($field1 = null, $field2 = null, $sql_logical_operator = 'AND')
+    public function on($field1 = null, $field2 = null, $sql_logical_operator = 'AND')
     {
         $sql = '';
         if ($field1) {
@@ -79,9 +86,10 @@ class QueryBuilder
                 $sql = ' ON ' . $field1." = ". $field2;
             }
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function where($field = null, $value = null, $sql_start_with_where = true, $sql_logical_operator = 'AND', $sql_operand = '=')
+    public function where($field = null, $value = null, $sql_start_with_where = true, $sql_logical_operator = 'AND', $sql_operand = '=')
     {
         $sql = '';
         if ($value) {
@@ -101,9 +109,10 @@ class QueryBuilder
                 $sql = $sql . $field ." ". $sql_operand . " '". $value ."')";
             }
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function like($field = null, $value = null, $sql_start_with_where = true, $sql_logical_operator = 'AND')
+    public function like($field = null, $value = null, $sql_start_with_where = true, $sql_logical_operator = 'AND')
     {
         $sql = '';
         if ($value) {
@@ -121,22 +130,25 @@ class QueryBuilder
             $sql_end = substr($sql_end, 0, -4);
             $sql = $sql_start . $sql_end . ")";
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function limit($start = null, $range = null)
+    public function limit($start = null, $range = null)
     {
         $sql = '';
         if ($range) {
             $sql = ' LIMIT ' . $start .', '. $range;
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
-    public static function order_by($table_name, $field = null, $sorting_method = null)
+    public function order_by($table_name, $field = null, $sorting_method = null)
     {
         $sql = '';
         if ($field) {
             $sql = ' ORDER BY ' . $table_name . '.'. $field . ' ' .$sorting_method;
         }
-        return $sql;
+        $this->sql = $this->sql . $sql;
+        return $this;
     }
 }

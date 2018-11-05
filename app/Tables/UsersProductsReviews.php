@@ -23,11 +23,13 @@ class UsersProductsReviews extends ActiveRecord
 
     public function get_reviews($id)
     {
-        $sql = QueryBuilder::select($this->table_name, ['users_products_reviews.text_review', 'users_products_reviews.created_at', 'users.email']) .
-            QueryBuilder::inner_join('users') .
-            QueryBuilder::on('users.id', 'users_products_reviews.user_id') .
-            QueryBuilder::where('users_products_reviews.product_id', $id) .
-            QueryBuilder::order_by($this->table_name, 'created_at', 'DESC');
+        $obj = new QueryBuilder();
+        $obj->select($this->table_name, ['users_products_reviews.text_review', 'users_products_reviews.created_at', 'users.email'])
+            ->inner_join('users')
+            ->on('users.id', 'users_products_reviews.user_id')
+            ->where('users_products_reviews.product_id', $id)
+            ->order_by($this->table_name, 'created_at', 'DESC');
+        $sql = $obj->sql;
         return $this->my_query($sql);
     }
     public function add_review($pr_id, $us_id, $text)

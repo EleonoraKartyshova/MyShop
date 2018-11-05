@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-default mynavbar  mynavbar-fixed-top">
+            <nav class="navbar navbar-default mynavbar navbar-fixed-top mynavbar-fixed-top">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">

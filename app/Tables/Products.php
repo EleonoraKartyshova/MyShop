@@ -75,16 +75,17 @@ class Products extends ActiveRecord
         $where_price_to_value = null
     )
     {
+        $obj = new QueryBuilder();
         if ($filter_flag == false) {
             $sql_like_start_with_where = true;
             if ($where_value) {
                 $sql_like_start_with_where = false;
             }
-            $sql = QueryBuilder::select($this->table_name) .
-                QueryBuilder::where($where_field, $where_value) .
-                QueryBuilder::like($like_field, $like_value, $sql_like_start_with_where) .
-                QueryBuilder::order_by($this->table_name, $order_by_field, $order_by_sorting_method) .
-                QueryBuilder::limit($start, $range);
+            $obj->select($this->table_name)
+                ->where($where_field, $where_value)
+                ->like($like_field, $like_value, $sql_like_start_with_where)
+                ->order_by($this->table_name, $order_by_field, $order_by_sorting_method)
+                ->limit($start, $range);
         } else {
             $sql_start_with_where_length = true;
             $sql_start_with_where_material = true;
@@ -112,17 +113,18 @@ class Products extends ActiveRecord
             } if ($where_price_from_value) {
                 $sql_start_with_where_price_to = false;
             }
-            $sql = QueryBuilder::select($this->table_name) .
-                QueryBuilder::where($where_field, $where_value) .
-                QueryBuilder::where($where_length_field, $where_length_value, $sql_start_with_where_length, $sql_logical_operator = 'OR') .
-                QueryBuilder::like($where_fabric_material_field, $where_fabric_material_value, $sql_start_with_where_material, $sql_logical_operator = 'OR') .
-                QueryBuilder::like($where_color_field, $where_color_value, $sql_start_with_where_color, $sql_logical_operator = 'OR') .
-                QueryBuilder::where($where_price_from_field, $where_price_from_value, $sql_start_with_where_price_from, $sql_logical_operator = 'AND', $sql_operand = '>=') .
-                QueryBuilder::where($where_price_to_field, $where_price_to_value, $sql_start_with_where_price_to, $sql_logical_operator = 'AND', $sql_operand = '<=') .
-                QueryBuilder::like($like_field, $like_value, $sql_start_with_where = false) .
-                QueryBuilder::order_by($this->table_name, $order_by_field, $order_by_sorting_method) .
-                QueryBuilder::limit($start, $range);
+            $obj->select($this->table_name)
+                ->where($where_field, $where_value)
+                ->where($where_length_field, $where_length_value, $sql_start_with_where_length, $sql_logical_operator = 'OR')
+                ->like($where_fabric_material_field, $where_fabric_material_value, $sql_start_with_where_material, $sql_logical_operator = 'OR')
+                ->like($where_color_field, $where_color_value, $sql_start_with_where_color, $sql_logical_operator = 'OR')
+                ->where($where_price_from_field, $where_price_from_value, $sql_start_with_where_price_from, $sql_logical_operator = 'AND', $sql_operand = '>=')
+                ->where($where_price_to_field, $where_price_to_value, $sql_start_with_where_price_to, $sql_logical_operator = 'AND', $sql_operand = '<=')
+                ->like($like_field, $like_value, $sql_start_with_where = false)
+                ->order_by($this->table_name, $order_by_field, $order_by_sorting_method)
+                ->limit($start, $range);
         }
+        $sql = $obj->sql;
         return $this->my_query($sql);
     }
     public function products_count(
@@ -143,15 +145,16 @@ class Products extends ActiveRecord
         $where_price_to_value = null
     )
     {
+        $obj = new QueryBuilder();
         $select = 'COUNT(*)';
         if ($filter_flag == false) {
             $sql_like_start_with_where = true;
             if ($where_value) {
                 $sql_like_start_with_where = false;
             }
-            $sql = QueryBuilder::select($this->table_name, $select) .
-                QueryBuilder::where($where_field, $where_value) .
-                QueryBuilder::like($like_field, $like_value, $sql_like_start_with_where);
+            $obj->select($this->table_name, $select)
+                ->where($where_field, $where_value)
+                ->like($like_field, $like_value, $sql_like_start_with_where);
         } else {
             $sql_start_with_where_length = true;
             $sql_start_with_where_material = true;
@@ -179,15 +182,16 @@ class Products extends ActiveRecord
             } if ($where_price_from_value) {
                 $sql_start_with_where_price_to = false;
             }
-            $sql = QueryBuilder::select($this->table_name, $select) .
-                QueryBuilder::where($where_field, $where_value) .
-                QueryBuilder::where($where_length_field, $where_length_value, $sql_start_with_where_length, $sql_logical_operator = 'OR') .
-                QueryBuilder::like($where_fabric_material_field, $where_fabric_material_value, $sql_start_with_where_material, $sql_logical_operator = 'OR') .
-                QueryBuilder::like($where_color_field, $where_color_value, $sql_start_with_where_color, $sql_logical_operator = 'OR') .
-                QueryBuilder::where($where_price_from_field, $where_price_from_value, $sql_start_with_where_price_from, $sql_logical_operator = 'AND', $sql_operand = '>=') .
-                QueryBuilder::where($where_price_to_field, $where_price_to_value, $sql_start_with_where_price_to, $sql_logical_operator = 'AND', $sql_operand = '<=') .
-                QueryBuilder::like($like_field, $like_value, $sql_start_with_where = false);
+            $obj->select($this->table_name, $select)
+                ->where($where_field, $where_value)
+                ->where($where_length_field, $where_length_value, $sql_start_with_where_length, $sql_logical_operator = 'OR')
+                ->like($where_fabric_material_field, $where_fabric_material_value, $sql_start_with_where_material, $sql_logical_operator = 'OR')
+                ->like($where_color_field, $where_color_value, $sql_start_with_where_color, $sql_logical_operator = 'OR')
+                ->where($where_price_from_field, $where_price_from_value, $sql_start_with_where_price_from, $sql_logical_operator = 'AND', $sql_operand = '>=')
+                ->where($where_price_to_field, $where_price_to_value, $sql_start_with_where_price_to, $sql_logical_operator = 'AND', $sql_operand = '<=')
+                ->like($like_field, $like_value, $sql_start_with_where = false);
         }
+        $sql = $obj->sql;
         return $this->my_query_col($sql);
     }
 

@@ -21,12 +21,14 @@ class Orders extends ActiveRecord
 
     public function orders_history($user_id)
     {
-        $sql = QueryBuilder::select($this->table_name, ['orders.id', 'products.picture', 'products.title', 'products.price', 'orders.created_at']) .
-            QueryBuilder::inner_join('orders_products') .
-            QueryBuilder::inner_join('products') .
-            QueryBuilder::on(['orders.id', 'orders_products.product_id'], ['orders_products.order_id', 'products.id']) .
-            QueryBuilder::where('orders.user_id', $user_id) .
-            QueryBuilder::order_by('orders', 'created_at', 'DESC');
+        $obj = new QueryBuilder();
+        $obj->select($this->table_name, ['orders.id', 'products.picture', 'products.title', 'products.price', 'orders.created_at'])
+            ->inner_join('orders_products')
+            ->inner_join('products')
+            ->on(['orders.id', 'orders_products.product_id'], ['orders_products.order_id', 'products.id'])
+            ->where('orders.user_id', $user_id)
+            ->order_by('orders', 'created_at', 'DESC');
+        $sql = $obj->sql;
         return $this->my_query($sql);
     }
     public function place_an_order($us_id)

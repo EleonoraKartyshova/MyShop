@@ -3,9 +3,9 @@ require 'header.php';
 ?>
 <div class="container">
     <div class="row wrapper wrapper-products_filters">
-        <h4 class="col-xs-12 col-sm-6 col-md-4 col-lg-5 wrapper-products_filters-title">Category: <?php echo $category; ?> dresses</h4>
+        <h4 class="col-xs-12 col-sm-6 col-md-4 col-lg-5 wrapper-products_filters-title">Category: <?php echo $data['category']; ?> dresses</h4>
         <div class="col-xs-8 col-sm-6 col-md-3 col-lg-3  wrapper-products_filters-item">
-            <form action="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/" method="get">
+            <form action="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/" method="get">
                 <div id="imaginary_container">
                     <div class="input-group stylish-input-group">
                         <input type="text" class="form-control wrapper-products_filters-item_search"  placeholder="Search" name="search" pattern="[a-zA-Z0-9\ ]{3,}$" title="Enter uppercase and lowercase words">
@@ -24,11 +24,11 @@ require 'header.php';
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['sort']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/recommend/num/<?php echo $data['num']; ?>/page/1">recommend</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/new/num/<?php echo $data['num']; ?>/page/1">new</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/top/num/<?php echo $data['num']; ?>/page/1">top</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/low-price/num/<?php echo $data['num']; ?>/page/1">low-price</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/high-price/num/<?php echo $data['num']; ?>/page/1">high-price</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/recommend/num/<?php echo $data['num']; ?>/page/1">recommend</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/new/num/<?php echo $data['num']; ?>/page/1">new</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/top/num/<?php echo $data['num']; ?>/page/1">top</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/low-price/num/<?php echo $data['num']; ?>/page/1">low-price</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/high-price/num/<?php echo $data['num']; ?>/page/1">high-price</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,11 +36,11 @@ require 'header.php';
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['num']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/6/page/1">6</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/9/page/1">9</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/12/page/1">12</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/18/page/1">18</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/24/page/1">24</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/6/page/1">6</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/9/page/1">9</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/12/page/1">12</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/18/page/1">18</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/24/page/1">24</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@ require 'header.php';
                     <?php endif; ?>
                     <ul class="dropdown-menu" role="menu">
                         <li class="wrapper-products_filter-drupdown">
-                            <form action="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1" method="post">
+                            <form action="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1" method="post">
                                 <div>
                                     <div>Length</div>
                                     <div class="checkbox">
@@ -214,11 +214,11 @@ require 'header.php';
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['sort']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/recommend/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">recommend</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/new/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">new</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/top/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">top</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/low-price/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">low-price</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/high-price/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">high-price</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/recommend/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">recommend</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/new/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">new</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/top/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">top</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/low-price/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">low-price</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/high-price/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">high-price</a></li>
                     </ul>
                 </div>
             </div>
@@ -226,11 +226,11 @@ require 'header.php';
                 <div class="btn-group">
                     <button type="button" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><?php echo $data['num']; ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/6/page/1/search/<?php echo $search; ?>">6</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/9/page/1/search/<?php echo $search; ?>">9</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/12/page/1/search/<?php echo $search; ?>">12</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/18/page/1/search/<?php echo $search; ?>">18</a></li>
-                        <li><a href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/24/page/1/search/<?php echo $search; ?>">24</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/6/page/1/search/<?php echo $search; ?>">6</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/9/page/1/search/<?php echo $search; ?>">9</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/12/page/1/search/<?php echo $search; ?>">12</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/18/page/1/search/<?php echo $search; ?>">18</a></li>
+                        <li><a href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/24/page/1/search/<?php echo $search; ?>">24</a></li>
                     </ul>
                 </div>
             </div>
@@ -244,7 +244,7 @@ require 'header.php';
                     <?php endif; ?>
                     <ul class="dropdown-menu" role="menu">
                         <li class="wrapper-products_filter-drupdown">
-                            <form action="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>" method="post">
+                            <form action="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>" method="post">
                                 <div>
                                     <div>Length</div>
                                     <div class="checkbox">
@@ -413,7 +413,7 @@ require 'header.php';
     <div class="row wrapper">
         <div class="wrapper-products_filter  hidden-sm hidden-xs col-md-2 col-lg-3">
             <div class="wrapper-products_filter-title">Filter <span class="glyphicon glyphicon-filter"></span></div><br>
-            <form action="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1<?php if ($search){echo "/search/".$search;}?>" method="post">
+            <form action="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1<?php if ($search){echo "/search/".$search;}?>" method="post">
                 <div>
                     <div>Length</div>
                     <div class="checkbox">
@@ -594,23 +594,23 @@ require 'header.php';
                 if (!$search):?>
                     <?php
                     if ($data['previous_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1">First page</a></li>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>"><?php echo $data['previous_page']; ?></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1">First page</a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>"><?php echo $data['previous_page']; ?></a></li>
                     <?php endif; ?>
-                    <li class="page-item active"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['current_page']; ?>"><?php echo $data['current_page']; ?></a></li>
+                    <li class="page-item active"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['current_page']; ?>"><?php echo $data['current_page']; ?></a></li>
                     <?php
                     if ($data['next_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>"><?php echo $data['next_page']; ?></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>"><?php echo $data['next_page']; ?></a></li>
                     <?php endif; ?>
                     <?php
                     if ($data['after_next_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['after_next_page']; ?>"><?php echo $data['after_next_page']; ?></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['after_next_page']; ?>"><?php echo $data['after_next_page']; ?></a></li>
                     <?php endif; ?>
                     <?php
                     if ($data['next_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['last_page']; ?>">Last page</a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['last_page']; ?>">Last page</a></li>
                     <?php endif; ?>
                 <?php endif; ?>
 
@@ -618,23 +618,23 @@ require 'header.php';
                 if ($search):?>
                     <?php
                     if ($data['previous_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">First page</a></li>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>/search/<?php echo $search; ?>" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['previous_page']; ?></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/1/search/<?php echo $search; ?>">First page</a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>/search/<?php echo $search; ?>" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['previous_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['previous_page']; ?></a></li>
                     <?php endif; ?>
-                    <li class="page-item active"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['current_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['current_page']; ?></a></li>
+                    <li class="page-item active"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['current_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['current_page']; ?></a></li>
                     <?php
                     if ($data['next_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['next_page']; ?></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['next_page']; ?></a></li>
                     <?php endif; ?>
                     <?php
                     if ($data['after_next_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['after_next_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['after_next_page']; ?></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['after_next_page']; ?>/search/<?php echo $search; ?>"><?php echo $data['after_next_page']; ?></a></li>
                     <?php endif; ?>
                     <?php
                     if ($data['next_page']):?>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>/search/<?php echo $search; ?>" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $category; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['last_page']; ?>/search/<?php echo $search; ?>">Last page</a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['next_page']; ?>/search/<?php echo $search; ?>" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                        <li class="page-item"><a class="page-link" href="/products/dresses/category/<?php echo $data['category']; ?>/sort/<?php echo $data['sort']; ?>/num/<?php echo $data['num']; ?>/page/<?php echo $data['last_page']; ?>/search/<?php echo $search; ?>">Last page</a></li>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>
